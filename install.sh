@@ -5,3 +5,4 @@ cp .vimrc ~/
 cp .vimrc.after ~/
 cp .npmrc ~/
 cp .gitconfig ~/
+cp -r .pip ~/
