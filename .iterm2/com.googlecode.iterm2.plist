@@ -1204,7 +1204,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>167 372 796 473 0 0 1920 1058 </string>
+	<string>167 347 796 473 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 532 1920 526 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -1841,7 +1841,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>2</integer>
+			<integer>7</integer>
 			<key>Working Directory</key>
 			<string>/Users/yuthon</string>
 		</dict>
