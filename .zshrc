@@ -49,17 +49,18 @@ ZSH_THEME="hyperzsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions catimg)
+plugins=(git zsh-autosuggestions catimg autojump)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/Cellar/pyqt/4.12/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -82,11 +83,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias matlab="/Applications/MATLAB_R2016b.app/bin/matlab -nodisplay -nosplash"
+alias typora="open -a typora"
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # homebrew mirrors
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 proxy='http://127.0.0.1:6152'
 # where proxy
@@ -115,10 +118,13 @@ noproxy () {
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias matlab="/Applications/MATLAB_R2016b.app/bin/matlab -nodisplay -nosplash"
-alias typora="open -a typora"
-
 export NVM_DIR="/Users/yuthon/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# autojump
+# [[ -s /Users/yuthon/.autojump/etc/profile.d/autojump.sh ]] && source /Users/yuthon/.autojump/etc/profile.d/autojump.sh
+# autoload -U compinit && compinit -u
+
+eval "$(thefuck --alias)"

@@ -1204,9 +1204,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1920 1058 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>167 411 937 465 0 0 1920 1058 </string>
+	<string>561 427 937 465 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1270 0 650 1058 0 0 1920 1058 </string>
+	<string>1920 10 1914 1048 1920 0 1920 1058 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2486,6 +2486,8 @@
 			<string>/Users/yuthon</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
@@ -2556,7 +2558,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-04-06T11:13:07Z</date>
+	<date>2017-04-22T02:28:09Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
