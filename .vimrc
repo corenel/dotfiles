@@ -1,4 +1,4 @@
-" Name:     re-vim: a REasonable vim configuration
+" Name:     re-vim: Lightweight, extensible vim configuration
 " Author:   ashfinal <ashfinal@gmail.com>
 " URL:      https://github.com/ashfinal
 " License:  MIT license
@@ -88,7 +88,8 @@ set wrap " Wrap lines
 
 " set iskeyword+=-
 set whichwrap+=<,>,h,l,[,]
-
+" clear split fillchar
+set fillchars=vert:\ 
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
 
@@ -231,6 +232,8 @@ if !exists('g:noautoclosepum')
     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 endif
 
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -297,7 +300,8 @@ set splitright " Puts new vsplit windows to the right of the current
 set splitbelow " Puts new split windows to the bottom of the current
 
 " Split management
-nmap <silent> <S-Tab> :bnext<CR>
+nnoremap <silent> [b :bprevious<cr>
+nnoremap <silent> ]b :bnext<cr>
 nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
@@ -453,6 +457,7 @@ endfunction
 
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
+autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
 autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
@@ -546,9 +551,9 @@ function! ToggleFoldMethod()
 endfunction
 
 " Toggle tmux statusline automatically
-" if exists('$TMUX')
-    " autocmd VimEnter,VimLeave * :silent !tmux set status
-" endif
+if exists('$TMUX')
+    autocmd VimEnter,VimLeave * :silent !tmux set status
+endif
 
 " Better cursorshape handling under iterm2 and tmux. WARNING: need more test.
 " if exists('$ITERM_SESSION_ID') && !exists('$TMUX')
@@ -582,15 +587,15 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if executable('node')
             Plug 'maksimr/vim-jsbeautify'
         endif
+        if executable('ag')
+            Plug 'gabesoft/vim-ags'
+        end
         Plug 'tpope/vim-surround'
         Plug 'Lokaltog/vim-easymotion'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
-        if version >= 703 && has('lua')
-            Plug 'Shougo/neocomplete.vim'
-        endif
         if version >= 704
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
@@ -602,14 +607,31 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
+        if executable('latexmk')
+            Plug 'lervag/vimtex'
+        end
         Plug 'metakirby5/codi.vim'
         Plug 'reedes/vim-colors-pencil'
         Plug 'ashfinal/vim-colors-paper'
         Plug 'ashfinal/vim-colors-violet'
+        if has('nvim')
+            if has('python3')
+                Plug 'roxma/nvim-completion-manager'
+                if executable('npm')
+                    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+                end
+            end
+        else
+            if version >= 703 && has('lua')
+                Plug 'Shougo/neocomplete.vim'
+            endif
+            if executable('npm')
+                Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+            end
+        endif
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
         endif
-
         call plug#end()
     else
         if executable('git')
@@ -656,7 +678,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     if filereadable(expand("~/.vim/plugged/undotree/plugin/undotree.vim"))
         let g:undotree_SplitWidth = 40
         let g:undotree_SetFocusWhenToggle = 1
-        nmap <silent> U :UndotreeToggle<CR>
+        nmap <silent> <Leader>u :UndotreeToggle<CR>
     endif
 
     " }}} Plugin Config - undotree "
@@ -731,6 +753,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     " Plugin Config - vim-table-mode {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
+
+        let g:table_mode_auto_align = 0
 
         autocmd FileType markdown
                     \ let g:table_mode_corner = "|" |
@@ -849,6 +873,30 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - airline "
+
+    " Plugin Config - vimtex {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vimtex/autoload/vimtex.vim"))
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+        let g:neocomplete#sources#omni#input_patterns.tex =
+            \ '\v\\%('
+            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \ . '|hyperref\s*\[[^]]*'
+            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|%(include%(only)?|input)\s*\{[^}]*'
+            \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|\a*'
+            \ . ')'
+    endif
+
+    " }}} Plugin Config - vimtex "
 
 endif
 
