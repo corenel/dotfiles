@@ -1,3 +1,4 @@
+export DISABLE_AUTO_TITLE='true'
 export ZSH=$HOME/.oh-my-zsh
 export TERM=xterm-256color
 export GTEST_COLOR=1
@@ -11,19 +12,6 @@ plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-alias sc='source ~/.zshrc'
-alias zc='vim ~/.zshrc'
-alias zh='vim ~/.hammerspoon/private/config.lua'
-alias mk='make -j`nproc`'
-alias mc='make clean'
-alias ci='g add . && g ci -m "ci" && g push'
-alias hisg='history | grep'
-alias t='TERM=xterm-256color tmux'
-alias tl='tmux list-sessions'
-alias ta='tmux attach -t'
-alias ts='t new -s'
-alias py3='python3'
-alias py2='python2'
 # Alias
 # edit config
 alias sc='source $HOME/.zshrc'
@@ -77,6 +65,8 @@ alias t='TERM=xterm-256color tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias ts='t new -s'
+alias tks='tmux kill-session -t'
+alias tkw='tmux kill-window -t'
 # python
 alias py3='python3'
 alias py2='python2'
