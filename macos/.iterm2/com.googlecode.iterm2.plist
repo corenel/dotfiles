@@ -1212,7 +1212,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>323 396 796 473 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1270 0 650 1058 0 0 1920 1058 </string>
+	<string>0 0 1920 1080 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2574,7 +2574,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/yuthon/Workspace/dotfile/dotfiles/.iterm2</string>
+	<string>/Users/yuthon/Workspace/dotfile/macos/.iterm2</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>

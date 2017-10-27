@@ -5,3 +5,5 @@
 [user]
 	name = corenel
 	email = xxdsox@gmail.com
+; [http]
+    ; proxy = http://127.0.0.1:6152

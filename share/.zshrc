@@ -5,6 +5,9 @@ export GTEST_COLOR=1
 export EDITOR='vim'
 # export CXX="ccache clang++"
 # export CC="ccache clang"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 
 ZSH_THEME="ys"
 
@@ -15,8 +18,11 @@ source $ZSH/oh-my-zsh.sh
 # Alias
 # edit config
 alias sc='source $HOME/.zshrc'
-alias zc='vim $HOME/.zshrc'
-alias zs='vim $HOME/.ssh/config'
+alias zc='$EDITOR $HOME/.zshrc'
+alias zcc='$EDITOR $HOME/.zshrc.custom'
+alias zs='$EDITOR $HOME/.ssh/config'
+alias zv='$EDITOR $HOME/.vimrc'
+alias zva='$EDITOR $HOME/.vimrc.after'
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
@@ -55,18 +61,17 @@ alias ff='find . -type f -name' # find files in current path
 alias fdr='sudo find / -type d -name' # find directories in root path
 alias ffr='sudo find / -type f -name' # find files in root path
 # dangerous operations with prompt
-alias mv='mv -i'
-alias mv='rm -i'
-for c in mv cp rm chmod chown rename; do
-  alias $c="$c -v"
-done
+alias mv='mv -i -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+alias chmod='chmod -v'
+alias chown='chown -v'
+alias rename='rename -v'
 # tmux
 alias t='TERM=xterm-256color tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias ts='t new -s'
-alias tks='tmux kill-session -t'
-alias tkw='tmux kill-window -t'
 # python
 alias py3='python3'
 alias py2='python2'
@@ -74,12 +79,24 @@ alias py2='python2'
 alias dfh='df -hlT'
 alias gput='watch -n 1 nvidia-smi'
 alias tree='tree -F -A -I CVS'
-# utils
-alias typora="open -a typora"
+# package manager
+export apt_pref='apt-get' # change to apt-fast if you like
+alias aac='sudo $apt_pref autoclean'
+alias aupd='sudo $apt_pref update'
+alias aupg='sudo $apt_pref upgrade'
+alias audg='sudo $apt_pref update && sudo $apt_pref upgrade'
+alias apge='sudo $apt_pref purge'
+alias arm='sudo $apt_pref remove'
+alias di='sudo dpkg -i'
+alias ai='sudo $apt_pref install'
+alias acs='apt-cache search'
+# shadowsocks
+alias ss='$HOME/proxyservice on'
+alias ssk='$HOME/proxyservice off'
 
+# proxy
 proxy='http://127.0.0.1:6152'
-# where proxy
-proxy () {
+function proxy () {
   export http_proxy=$proxy
   export HTTPS_PROXY=$http_proxy
   export HTTP_PROXY=$http_proxy
@@ -91,8 +108,7 @@ proxy () {
   echo "Proxy on"
 }
 
-# where noproxy
-noproxy () {
+function noproxy () {
   unset http_proxy
   unset HTTPS_PROXY
   unset HTTP_PROXY
@@ -102,12 +118,10 @@ noproxy () {
   echo "Proxy off"
 }
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
 # virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# custom
+source $HOME/.zshrc.custom

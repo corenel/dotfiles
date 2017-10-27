@@ -1,0 +1,28 @@
+#deb http://ports.ubuntu.com/ xenial main restricted universe multiverse
+#deb-src http://ports.ubuntu.com/ xenial main restricted universe multiverse
+#deb http://ports.ubuntu.com/ xenial-updates main restricted universe multiverse
+#deb-src http://ports.ubuntu.com/ xenial-updates main restricted universe multiverse
+#deb http://ports.ubuntu.com/ xenial-security main restricted universe multiverse
+#deb-src http://ports.ubuntu.com/ xenial-security main restricted universe multiverse
+#deb http://ports.ubuntu.com/ xenial-backports main restricted universe multiverse
+#deb-src http://ports.ubuntu.com/ xenial-backports main restricted universe multiverse
+#deb http://ports.ubuntu.com/ubuntu-ports/ xenial main universe restricted
+#deb-src http://ports.ubuntu.com/ubuntu-ports/ xenial main universe restricted #Added by software-properties
+
+deb http://mirrors.zju.edu.cn/ubuntu xenial main universe restricted multiverse
+deb http://mirrors.zju.edu.cn/ubuntu xenial-security main universe restricted multiverse
+deb http://mirrors.zju.edu.cn/ubuntu xenial-updates main universe restricted multiverse
+deb http://mirrors.zju.edu.cn/ubuntu xenial-backports main universe restricted multiverse
+# deb-src http://mirrors.zju.edu.cn/ubuntu xenial main universe restricted multiverse
+# deb-src http://mirrors.zju.edu.cn/ubuntu xenial-security main universe restricted multiverse
+# deb-src http://mirrors.zju.edu.cn/ubuntu xenial-updates main universe restricted multiverse
+# deb-src http://mirrors.zju.edu.cn/ubuntu xenial-backports main universe restricted multiverse
+
+# deb https://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ xenial main main restricted universe multiverse
+# deb https://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+# deb https://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+# deb https://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse

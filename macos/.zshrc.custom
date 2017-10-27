@@ -1,0 +1,12 @@
+# homebrew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+# nvm
+function nvm_on () {
+  export NVM_DIR='$HOME/.nvm'
+  . '/usr/local/opt/nvm/nvm.sh'
+}
+
+# utils
+alias typora='open -a typora'
+
