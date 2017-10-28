@@ -95,8 +95,11 @@ nmap ∑      :BD<CR>
 nmap <Leader>z z=1<CR><CR>
 
 " Fix annoyances in the QuickFix window, like scrolling too much
-autocmd FileType qf setlocal number nolist scrolloff=0
-autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
+augroup quickfix
+  autocmd!
+  autocmd FileType qf setlocal number nolist scrolloff=0
+  autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
+augroup END
 
 " Commands to send common keystrokes using tmux
 let g:tmux_console_pane = '0:0.0'
@@ -118,11 +121,11 @@ nmap K  <silent>
 
 " Make the cursor stay on the same line when window switching
 function! KeepCurrentLine(motion)
-  let theLine = line('.')
-  let theCol = col('.')
+  let l:theLine = line('.')
+  let l:theCol = col('.')
   exec 'wincmd ' . a:motion
   if &diff
-    call cursor(theLine, theCol)
+    call cursor(l:theLine, l:theCol)
   endif
 endfunction
 nnoremap <C-w>h :silent call KeepCurrentLine('h')<CR>
@@ -136,7 +139,7 @@ nnoremap <C-w>l :silent call KeepCurrentLine('l')<CR>
 " the same directory as the current file.
 cnoremap $c e <C-\>eCurrentFileDir()<CR>
 function! CurrentFileDir()
-   return "e " . expand("%:p:h") . "/"
+   return 'e ' . expand('%:p:h') . '/'
 endfunction
 
 " I can't spell :(
@@ -144,19 +147,12 @@ abbr conosle console
 abbr comopnent component
 
 " Debugging helpers
-autocmd BufEnter *.py iabbr xxx print('XXX
-autocmd BufEnter *.py iabbr yyy print('YYY
-autocmd BufEnter *.py iabbr zzz print('ZZZ
-autocmd BufEnter *.coffee iabbr xxx console.log 'XXX',
-autocmd BufEnter *.coffee iabbr yyy console.log 'YYY',
-autocmd BufEnter *.coffee iabbr zzz console.log 'ZZZ',
-autocmd BufEnter *.js iabbr xxx console.log('XXX',
-autocmd BufEnter *.js iabbr yyy console.log('YYY',
-autocmd BufEnter *.js iabbr zzz console.log('ZZZ',
-autocmd BufEnter *.rb iabbr xxx puts "XXX
-autocmd BufEnter *.rb iabbr yyy puts "YYY
-autocmd BufEnter *.rb iabbr zzz puts "ZZZ
-autocmd BufEnter *.rb iabbr ppp require 'pp'; pp
+augroup debug
+  autocmd!
+  autocmd BufEnter *.py iabbr xxx print('XXX')
+  autocmd BufEnter *.py iabbr yyy print('YYY')
+  autocmd BufEnter *.py iabbr zzz print('ZZZ')
+augroup END
 
 " ----------------------------------------------------------------------------
 " OPTIONS
@@ -169,11 +165,12 @@ set backspace=indent,eol,start
                             " Allow backspace beyond insertion point
 set cindent                 " Automatic program indenting
 set cinkeys-=0#             " Comments don't fiddle with indenting
-set cino=                   " See :h cinoptions-values
+set cinoptions=                   " See :h cinoptions-values
 set commentstring=\ \ #%s   " When folds are created, add them to this
 set copyindent              " Make autoindent use the same chars as prev line
 set directory-=.            " Don't store temp files in cwd
 set encoding=utf8           " UTF-8 by default
+scriptencoding utf8
 set expandtab               " No tabs
 set fileformats=unix,dos,mac  " Prefer Unix
 set fillchars=vert:\ ,stl:\ ,stlnc:\ ,fold:-,diff:┄
@@ -198,9 +195,9 @@ set list                    " Show whitespace as special chars - see listchars
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:· " Unicode characters for various things
 set matchtime=2             " Tenths of second to hilight matching paren
 set modelines=5             " How many lines of head & tail to look for ml's
-silent! set mouse=nvc       " Use the mouse, but not in insert mode
+" silent! set mouse=nvc       " Use the mouse, but not in insert mode
 set nobackup                " No backups left after done editing
-"set nonumber                " No line numbers to start
+" set nonumber                " No Line numbers to start
 set visualbell t_vb=        " No flashing or beeping at all
 set nowritebackup           " No backups made while editing
 set printoptions=paper:letter " US paper
@@ -253,12 +250,12 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " For any plugins that use this, make their keymappings use comma
-let mapleader = ","
-let maplocalleader = ","
+let g:mapleader = ','
+let g:maplocalleader = ','
 
 " FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
-set rtp+=/usr/local/opt/fzf
-set rtp+=~/.fzf
+set runtimepath+=/usr/local/opt/fzf
+set runtimepath+=~/.fzf
 nmap ; :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 nmap <Leader>t :Files<CR>
@@ -290,6 +287,13 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
+let g:ale_linters = {
+\   'python': ['pylint', 'autopep8', 'flake8', 'isort', 'mypy', 'pycodestyle', 'yapf'],
+\   'vim': ['vint'],
+\   'xml': ['xmllint'],
+\   'yaml': ['yamllint'],
+\   'text': ['write-good'],
+\}
 
 " Lightline
 let g:lightline = {
@@ -313,13 +317,13 @@ function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+  return l:counts.total == 0 ? '' : printf('%d ◆', l:all_non_errors)
 endfunction
 function! LightlineLinterErrors() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+  return l:counts.total == 0 ? '' : printf('%d ✗', l:all_errors)
 endfunction
 function! LightlineLinterOK() abort
   let l:counts = ale#statusline#Count(bufnr(''))
@@ -329,7 +333,10 @@ function! LightlineLinterOK() abort
 endfunction
 
 " Update and show lightline but only if it's visible (e.g., not in Goyo)
-autocmd User ALELint call s:MaybeUpdateLightline()
+augroup ale
+  autocmd!
+  autocmd User ALELint call s:MaybeUpdateLightline()
+augroup END
 function! s:MaybeUpdateLightline()
   if exists('#lightline')
     call lightline#update()
@@ -345,9 +352,9 @@ set background=dark
 let g:rehash256 = 1 " Something to do with Molokai?
 colorscheme molokai
 if !has('gui_running')
-  if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  if $TERM ==# 'xterm-256color' || $TERM ==# 'screen-256color' || $COLORTERM ==# 'gnome-terminal'
     set t_Co=256
-  elseif has("terminfo")
+  elseif has('terminfo')
     colorscheme default
     set t_Co=8
     set t_Sf=[3%p1%dm
@@ -359,7 +366,7 @@ if !has('gui_running')
     set t_Sb=[4%dm
   endif
   " Disable Background Color Erase when within tmux - https://stackoverflow.com/q/6427650/102704
-  if $TMUX != ""
+  if $TMUX !=# ''
     set t_ut=
   endif
 endif
@@ -430,7 +437,7 @@ function! ProseMode()
   call goyo#execute(0, [])
   set spell noci nosi noai nolist noshowmode noshowcmd
   set complete+=s
-  set bg=light
+  set background=light
   if !has('gui_running')
     let g:solarized_termcolors=256
   endif
@@ -444,45 +451,42 @@ command! ProseMode call ProseMode()
 
 " Reset all autocommands
 augroup vimrc
-autocmd!
-
-au BufNewFile,BufRead *.cson    set ft=coffee
-au BufNewFile,BufRead *.glsl    setf glsl
-au BufNewFile,BufRead *.gyp     set ft=python
-au BufNewFile,BufRead *.html    setlocal nocindent smartindent
-au BufNewFile,BufRead *.i7x     setf inform7
-au BufNewFile,BufRead *.ini     setf conf
-au BufNewFile,BufRead *.input   setf gnuplot
-au BufNewFile,BufRead *.json    set ft=json tw=0
-au BufNewFile,BufRead *.less    setlocal ft=less nocindent smartindent
-au BufNewFile,BufRead *.md      setlocal ft=markdown nolist spell
-au BufNewFile,BufRead *.md,*.markdown setlocal foldlevel=999 tw=0 nocin
-au BufNewFile,BufRead *.ni      setlocal ft=inform nolist ts=2 sw=2 noet
-au BufNewFile,BufRead *.plist   setf xml
-au BufNewFile,BufRead *.rb      setlocal noai
-au BufNewFile,BufRead *.rxml    setf ruby
-au BufNewFile,BufRead *.sass    setf sass
-au BufNewFile,BufRead *.ttml    setf xml
-au BufNewFile,BufRead *.vert,*.frag set ft=glsl
-au BufNewFile,BufRead *.xml     setlocal ft=xml  ts=2 sw=2 et
-au BufNewFile,BufRead *.zone    setlocal nolist ts=4 sw=4 noet
-au BufNewFile,BufRead *.zsh     setf zsh
-au BufNewFile,BufRead *templates/*.html setf htmldjango
-au BufNewFile,BufRead .git/config setlocal ft=gitconfig nolist ts=4 sw=4 noet
-au BufNewFile,BufRead .gitconfig* setlocal ft=gitconfig nolist ts=4 sw=4 noet
-au BufNewFile,BufRead .vimlocal,.gvimlocal setf vim
-au BufNewFile,BufRead .zshlocal setf zsh
-au BufNewFile,BufRead /tmp/crontab* setf crontab
-au BufNewFile,BufRead COMMIT_EDITMSG setlocal nolist nonumber
-au BufNewFile,BufRead Makefile setlocal nolist
-
-au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet
-au FileType inform7 setlocal nolist tw=0 ts=4 sw=4 noet foldlevel=999
-au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
-au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
-au FileType markdown syn sync fromstart
-au Filetype gitcommit setlocal tw=80
-
+  autocmd!
+  au BufNewFile,BufRead *.cson    set ft=coffee
+  au BufNewFile,BufRead *.glsl    setf glsl
+  au BufNewFile,BufRead *.gyp     set ft=python
+  au BufNewFile,BufRead *.html    setlocal nocindent smartindent
+  au BufNewFile,BufRead *.i7x     setf inform7
+  au BufNewFile,BufRead *.ini     setf conf
+  au BufNewFile,BufRead *.input   setf gnuplot
+  au BufNewFile,BufRead *.json    set ft=json tw=0
+  au BufNewFile,BufRead *.less    setlocal ft=less nocindent smartindent
+  au BufNewFile,BufRead *.md      setlocal ft=markdown nolist spell
+  au BufNewFile,BufRead *.md,*.markdown setlocal foldlevel=999 tw=0 nocin
+  au BufNewFile,BufRead *.ni      setlocal ft=inform nolist ts=2 sw=2 noet
+  au BufNewFile,BufRead *.plist   setf xml
+  au BufNewFile,BufRead *.rb      setlocal noai
+  au BufNewFile,BufRead *.rxml    setf ruby
+  au BufNewFile,BufRead *.sass    setf sass
+  au BufNewFile,BufRead *.ttml    setf xml
+  au BufNewFile,BufRead *.vert,*.frag set ft=glsl
+  au BufNewFile,BufRead *.xml     setlocal ft=xml  ts=2 sw=2 et
+  au BufNewFile,BufRead *.zone    setlocal nolist ts=4 sw=4 noet
+  au BufNewFile,BufRead *.zsh     setf zsh
+  au BufNewFile,BufRead *templates/*.html setf htmldjango
+  au BufNewFile,BufRead .git/config setlocal ft=gitconfig nolist ts=4 sw=4 noet
+  au BufNewFile,BufRead .gitconfig* setlocal ft=gitconfig nolist ts=4 sw=4 noet
+  au BufNewFile,BufRead .vimlocal,.gvimlocal setf vim
+  au BufNewFile,BufRead .zshlocal setf zsh
+  au BufNewFile,BufRead /tmp/crontab* setf crontab
+  au BufNewFile,BufRead COMMIT_EDITMSG setlocal nolist nonumber
+  au BufNewFile,BufRead Makefile setlocal nolist
+  au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet
+  au FileType inform7 setlocal nolist tw=0 ts=4 sw=4 noet foldlevel=999
+  au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
+  au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
+  au FileType markdown syn sync fromstart
+  au Filetype gitcommit setlocal tw=80
 augroup END
 
 " ----------------------------------------------------------------------------
@@ -490,7 +494,7 @@ augroup END
 " ----------------------------------------------------------------------------
 
 " Now load specifics to this host
-if filereadable(expand("~/.vimlocal"))
+if filereadable(expand('~/.vimlocal'))
   source ~/.vimlocal
 endif
 
