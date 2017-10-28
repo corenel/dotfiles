@@ -1,0 +1,21 @@
+session_name: python-workspace
+start_directory: ./ # load session relative to config location (project root).
+# before_script: pipenv install --dev --skip-lock
+# shell_command_before: 
+  # - '[ -d `pipenv --venv` ] && source `pipenv --venv`/bin/activate && reset'
+windows:
+- window_name: editor
+  focus: True
+  layout: 282f,238x51,0,0[238x39,0,0{119x39,0,0,0,118x39,120,0,5},238x11,0,40{119x11,0,40,3,118x11,120,40,4}]
+  options:
+    automatic-rename: on
+  panes:
+  - shell_command:
+    - vim
+    focus: true
+  - shell_command:
+    - vim
+  - shell_command:
+    - python3
+  - shell_command:
+    - pwd

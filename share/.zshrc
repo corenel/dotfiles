@@ -21,7 +21,7 @@ alias sc='source $HOME/.zshrc'
 alias zc='$EDITOR $HOME/.zshrc'
 alias zcc='$EDITOR $HOME/.zshrc.custom'
 alias zs='$EDITOR $HOME/.ssh/config'
-alias zv='$EDITOR $HOME/.vimrc'
+alias zv='$EDITOR $HOME/.vim/vimrc'
 alias zva='$EDITOR $HOME/.vimrc.after'
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
@@ -72,6 +72,9 @@ alias t='TERM=xterm-256color tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias ts='t new -s'
+alias tks='tmux kill-session -t'
+alias tkw='tmux kill-window -t'
+alias tpl='tmuxp load'
 # python
 alias py3='python3'
 alias py2='python2'
@@ -122,6 +125,9 @@ function noproxy () {
 export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # custom
 source $HOME/.zshrc.custom

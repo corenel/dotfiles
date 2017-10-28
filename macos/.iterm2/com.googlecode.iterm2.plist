@@ -1210,7 +1210,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>652 499 620 392 0 0 1920 1058 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>323 396 796 473 0 0 1920 1080 </string>
+	<string>808 158 796 473 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1920 1080 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -2533,7 +2533,7 @@
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
@@ -2599,12 +2599,16 @@
 	<true/>
 	<key>SwitchPaneModifier</key>
 	<integer>5</integer>
+	<key>SwitchTabModifier</key>
+	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>9</integer>
 	<key>TabStyle</key>
 	<integer>3</integer>
 	<key>UseBorder</key>
 	<false/>
+	<key>UseLionStyleFullscreen</key>
+	<true/>
 	<key>Window Arrangements</key>
 	<dict>
 		<key>six</key>
