@@ -35,6 +35,7 @@ repos=(
   tpope/vim-unimpaired
   w0rp/ale
   wellle/targets.vim
+  mbbill/undotree
 
 )
 
