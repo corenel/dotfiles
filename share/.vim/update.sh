@@ -36,6 +36,7 @@ repos=(
   w0rp/ale
   wellle/targets.vim
   mbbill/undotree
+  terryma/vim-multiple-cursors
 
 )
 
