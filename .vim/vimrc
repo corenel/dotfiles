@@ -608,7 +608,7 @@ call pathogen#helptags()
             call goyo#execute(0, [])
             set spell noci nosi noai nolist noshowmode noshowcmd
             set complete+=s
-            set background=light
+            " set background=light
             if !has('gui_running')
                 let g:solarized_termcolors=256
             endif
@@ -769,7 +769,7 @@ call pathogen#helptags()
 
     " }}} Lightline
 
-    " undotree {{{ "
+    " undotree {{{
 
     if filereadable(expand('$HOME/.vim/bundle/undotree/plugin/undotree.vim'))
         let g:undotree_SplitWidth = 40
@@ -777,9 +777,9 @@ call pathogen#helptags()
         nmap <silent> <Leader>u :UndotreeToggle<CR>
     endif
 
-    " }}} undotree "
+    " }}} undotree
 
-    " vim-multiple-cursors {{{ "
+    " vim-multiple-cursors {{{
 
     if filereadable(expand('$HOME/.vim/bundle/vim-multiple-cursors/plugin/multiple_cursors.vim'))
         let g:multi_cursor_use_default_mapping = 0
@@ -798,7 +798,7 @@ call pathogen#helptags()
             endif
         endfunction
     endif
-    " }}} vim-multiple-cursors "
+    " }}} vim-multiple-cursors
 
 " }}} Plugin Settings
 
