@@ -88,13 +88,34 @@ copy $basedir/.ssh $HOME/.ssh
 echo "Setting up vim plugins..."
 .vim/update.sh
 
-# postinstall=$HOME/.postinstall
-# if [ -e $postinstall ]; then
-#   echo "Running post-install..."
-#   . $postinstall
-# else
-#   echo "No post install script found. Optionally create one at $postinstall"
-# fi
+postinstall=$HOME/.postinstall
+if [ -e $postinstall ]; then
+  echo "Running post-install for os-specific dotfiles"
+  # check os type
+  if [ "$(uname)" == "Darwin" ]; then
+    oscustom=$postinstall/macos
+  elif [ "$(uname)" == "Linux" ]; then
+    oscustom=$postinstall/ubuntu
+  else
+    echo "unsupported os type."
+    return
+  fi
+
+  cd $oscustom
+  # symlink os custom
+  for path in .* ; do
+    case $path in
+      .|..)
+        continue
+        ;;
+      *)
+        symlink $oscustom/$path $HOME/$path
+        ;;
+    esac
+  done
+else
+  echo "No post install script found. Optionally create one at $postinstall"
+fi
 
 echo "Done."
 

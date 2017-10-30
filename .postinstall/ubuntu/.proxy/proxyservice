@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-ssconfig="$HOME/ss.json"
-poliporc="$HOME/.poliporc"
+ssconfig="$HOME/.proxy/ss.json"
+poliporc="$HOME/.proxy/.poliporc"
 
 if [[ ! -e $ssconfig ]]; then
   echo "missing $ssconfig"
