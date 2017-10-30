@@ -324,13 +324,6 @@ call pathogen#helptags()
         "     nmap <silent> <Leader>l :source $HOME/.vim/.last.session<CR>
         " endif
 
-        " set completeopt=menu,preview,longest
-        " set pumheight=10
-        " " automatically open and close the popup menu / preview window
-        " if !exists('g:noautoclosepum')
-        "     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        " endif
-
         " Return to last edit position when opening files (You want this!)
         augroup lastpos:
             autocmd BufReadPost *
@@ -809,6 +802,17 @@ call pathogen#helptags()
     " completor.vim {{{
 
     if filereadable(expand('$HOME/.vim/bundle/completor.vim/plugin/completor.vim'))
+        let g:completor_python_binary = '/usr/local/bin/python3'
+        let g:completor_clang_binary = '/usr/bin/clang'
+        " let g:completor_set_options = 0\
+
+        set completeopt-=noselect
+        " set pumheight=10
+        " automatically open and close the popup menu / preview window
+        " if !exists('g:noautoclosepum')
+        "     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+        " endif
+
         " inoremap <expr> <Tab> pumvisible() ? '\<C-n>' : '\<Tab>'
         " inoremap <expr> <S-Tab> pumvisible() ? '\<C-p>' : '\<S-Tab>'
         " inoremap <expr> <CR> (pumvisible() ? '\<c-y>\<cr>' : '\<CR>')
