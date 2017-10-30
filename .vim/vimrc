@@ -421,26 +421,26 @@ call pathogen#helptags()
     let g:maplocalleader = ','
 
     " Useful macros I use the most
+    " nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+    " nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+    " nmap \b :set nocin tw=80<CR>:set formatoptions+=a<CR>
+    " nmap \l :setlocal number!<CR>:setlocal number?<CR>
+    " nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+    " nmap \q :nohlsearch<CR>
+    " nmap \s :setlocal invspell<CR>
+    " nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+    " nmap \u :setlocal list!<CR>:setlocal list?<CR>
+    " nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
     nmap \A :set formatoptions+=a<CR>:echo "autowrap enabled"<CR>
-    nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-    nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
     nmap \a :set formatoptions-=a<CR>:echo "autowrap disabled"<CR>
-    nmap \b :set nocin tw=80<CR>:set formatoptions+=a<CR>
     nmap \c :call TmuxPaneClear()<CR>
     nmap \e :NERDTreeToggle<CR>
     nmap \f mt:Goyo<CR>'tzz
     nmap \g :Gstatus<CR>
     nmap \i vip:sort<CR>
-    nmap \l :setlocal number!<CR>:setlocal number?<CR>
-    nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
     nmap \o :set paste!<CR>:set paste?<CR>
     nmap \p :ProseMode<CR>
-    nmap \q :nohlsearch<CR>
     nmap \r :call TmuxPaneRepeat()<CR>
-    nmap \s :setlocal invspell<CR>
-    nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-    nmap \u :setlocal list!<CR>:setlocal list?<CR>
-    nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
     nmap \x :cclose<CR>
     nmap \z :w<CR>:!open %<CR><CR>
 
@@ -906,6 +906,14 @@ call pathogen#helptags()
     " endif
 
     " " }}} easymotion
+
+    " tagbar {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/tagbar/autoload/tagbar.vim'))
+        nmap \s :TagbarToggle<CR>
+    endif
+
+    " }}} tagbar
 
 " }}} Plugin Settings
 

@@ -38,6 +38,7 @@ repos=(
   SirVer/ultisnips
   lervag/vimtex
   # easymotion/vim-easymotion
+  majutsushi/tagbar
 
 )
 
