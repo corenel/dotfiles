@@ -23,7 +23,7 @@ alias zcc='$EDITOR $HOME/.zshrc.custom'
 alias zs='$EDITOR $HOME/.ssh/config'
 alias zv='$EDITOR $HOME/.vim/vimrc'
 alias uv='$HOME/.vim/update.sh'
-alias zva='$EDITOR $HOME/.vimrc.after'
+alias ud='$HOME/.dotfiles/install.sh'
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable

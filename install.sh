@@ -96,6 +96,7 @@ if [ -e $postinstall ]; then
         continue
         ;;
       .config)
+        echo "rsync .config"
         rsync -rtv $oscustom/$path/ $HOME/.config
         ;;
       *)
