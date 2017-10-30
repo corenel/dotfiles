@@ -2,4 +2,5 @@
 .#*
 .DS_Store
 .vim/bundle
+.vim/undotree
 .vimlocal
