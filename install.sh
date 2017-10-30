@@ -8,6 +8,26 @@ set -e
 basedir=$HOME/.dotfiles
 repourl=git://github.com/corenel/dotfiles.git
 
+function copy() {
+  src=$1
+  dest=$2
+
+  if [ -e $dest ]; then
+    # Already exists -- I'll assume correctly.
+    return
+  else
+    # Rename files with a ".old" extension.
+    echo "$dest already exists, renaming to $dest.old"
+    backup=$dest.old
+    if [ -e $backup ]; then
+      echo "Error: $backup already exists. Please delete or rename it."
+      exit 1
+    fi
+    mv -v $dest $backup
+  fi
+  cp -fr $src $dest
+}
+
 function symlink() {
   src=$1
   dest=$2
@@ -52,7 +72,7 @@ cd $basedir
 echo "Creating symlinks..."
 for path in .* ; do
   case $path in
-    .|..|.git|.gitignore)
+    .|..|.git|.gitignore|.ssh)
       continue
       ;;
     *)
@@ -60,7 +80,9 @@ for path in .* ; do
       ;;
   esac
 done
-# symlink $basedir/.vim/vimrc $HOME/.vimrc
+symlink $basedir/.vim/vimrc $HOME/.vimrc
+# copy instead of symlink to avoid other new files created later adding into repo
+copy $basedir/.ssh $HOME/.ssh
 
 # install/update vim plugins
 echo "Setting up vim plugins..."

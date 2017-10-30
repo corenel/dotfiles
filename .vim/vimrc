@@ -848,8 +848,8 @@ augroup END
 " Post {{{
 
 " Now load specifics to this host
-if filereadable(expand('~/.vimlocal'))
-    source ~/.vimlocal
+if filereadable(expand('$HOME/.vimlocal'))
+    source $HOME/.vimlocal
 endif
 
 " Some plugin seems to search for something at startup, so this fixes that.
