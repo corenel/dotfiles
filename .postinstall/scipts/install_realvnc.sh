@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # install xfce4 desktop environment
 echo "---- install xfce ----"
 sudo apt-get update

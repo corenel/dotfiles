@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # uninstall installed tmux
 sudo apt-get remove tmux
 sudo apt-get remove 'libevent-*'

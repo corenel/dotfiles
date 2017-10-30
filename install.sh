@@ -80,15 +80,15 @@ if [ -e $postinstall ]; then
   echo "Running post-install for os-specific dotfiles"
   # check os type
   if [ "$(uname)" == "Darwin" ]; then
-    oscustom=$postinstall/macos
+    oscustom=macos
   elif [ "$(uname)" == "Linux" ]; then
-    oscustom=$postinstall/ubuntu
+    oscustom=ubuntu
   else
     echo "unsupported os type."
     return
   fi
 
-  cd $oscustom
+  cd $postinstall/$oscustom
   # symlink os custom
   for path in .* ; do
     case $path in
@@ -97,13 +97,16 @@ if [ -e $postinstall ]; then
         ;;
       .config)
         echo "rsync .config"
-        rsync -rtv $oscustom/$path/ $HOME/.config
+        rsync -rtv $postinstall/$oscustom/$path/ $HOME/.config
         ;;
       *)
-        symlink $oscustom/$path $HOME/$path
+        symlink $postinstall/$oscustom/$path $HOME/$path
         ;;
     esac
   done
+
+  # execute post-install script
+  $postinstall/scripts/postinstall_$oscustom.sh
 else
   echo "No post install script found. Optionally create one at $postinstall"
 fi

@@ -9,6 +9,8 @@ mccabe
 mypy
 prospector
 yapf
+vim-vint
+yamllint
 
 # cpp linters
 cpplint

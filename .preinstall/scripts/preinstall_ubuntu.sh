@@ -16,23 +16,3 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-# copy dotfiles
-cp ./share/* $HOME/
-for c in .config .vnc .poliporc proxyservise ss.json .zshrc.custom; do
-  cp ./ubuntu/$c $HOME/
-done
-
-# install python packages
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
-mkdir -p .virtualenvs
-# mkvirtualenv -p python3 py3.5
-
-source $HOME/.zshrc
-
-# install vncserver
-# sudo apt-get install -y xfce4 xfce4-goodies tightvncserver
-# vncserver -kill :1
-# mv $HOME/.vnc/xstartup $HOME/.vnc/xstartup.bak
-# cp dotfiles/.vnc/xstartup $HOME/.vnc/
-# vncserver
