@@ -424,23 +424,23 @@ call pathogen#helptags()
     " nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
     " nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
     " nmap \b :set nocin tw=80<CR>:set formatoptions+=a<CR>
+    " nmap \c :call TmuxPaneClear()<CR>
     " nmap \l :setlocal number!<CR>:setlocal number?<CR>
     " nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
     " nmap \q :nohlsearch<CR>
+    " nmap \r :call TmuxPaneRepeat()<CR>
     " nmap \s :setlocal invspell<CR>
     " nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
     " nmap \u :setlocal list!<CR>:setlocal list?<CR>
     " nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
     nmap \A :set formatoptions+=a<CR>:echo "autowrap enabled"<CR>
     nmap \a :set formatoptions-=a<CR>:echo "autowrap disabled"<CR>
-    nmap \c :call TmuxPaneClear()<CR>
     nmap \e :NERDTreeToggle<CR>
     nmap \f mt:Goyo<CR>'tzz
     nmap \g :Gstatus<CR>
     nmap \i vip:sort<CR>
     nmap \o :set paste!<CR>:set paste?<CR>
     nmap \p :ProseMode<CR>
-    nmap \r :call TmuxPaneRepeat()<CR>
     nmap \x :cclose<CR>
     nmap \z :w<CR>:!open %<CR><CR>
 
@@ -537,17 +537,17 @@ call pathogen#helptags()
     augroup END
 
     " Commands to send common keystrokes using tmux
-    let g:tmux_console_pane = '0:0.0'
-    let g:tmux_server_pane = '0:0.0'
-    function TmuxPaneRepeat()
-        write
-        silent execute ':!tmux send-keys -t' g:tmux_console_pane 'C-p' 'C-j'
-        redraw!
-    endfunction
-    function TmuxPaneClear()
-        silent execute ':!tmux send-keys -t' g:tmux_server_pane 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j'
-        redraw!
-    endfunction
+    " let g:tmux_console_pane = '0:0.0'
+    " let g:tmux_server_pane = '0:0.0'
+    " function TmuxPaneRepeat()
+    "     write
+    "     silent execute ':!tmux send-keys -t' g:tmux_console_pane 'C-p' 'C-j'
+    "     redraw!
+    " endfunction
+    " function TmuxPaneClear()
+    "     silent execute ':!tmux send-keys -t' g:tmux_server_pane 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j'
+    "     redraw!
+    " endfunction
 
     " Make the cursor stay on the same line when window switching
     function! KeepCurrentLine(motion)
@@ -595,10 +595,10 @@ call pathogen#helptags()
             set spell noci nosi noai nolist noshowmode noshowcmd
             set complete+=s
             " set background=light
-            if !has('gui_running')
-                let g:solarized_termcolors=256
-            endif
-            colors solarized
+            " if !has('gui_running')
+            "     let g:solarized_termcolors=256
+            " endif
+            " colors solarized
         endfunction
         command! ProseMode call ProseMode()
 
@@ -629,8 +629,8 @@ call pathogen#helptags()
         set runtimepath+=/usr/local/opt/fzf
         set runtimepath+=~/.fzf
         nmap <Leader>b :Buffers<CR>
-        nmap <Leader>r :Tags<CR>
-        nmap <Leader>t :Files<CR>
+        nmap <Leader>t :Tags<CR>
+        nmap <Leader>f :Files<CR>
         nmap <Leader>a :Ag<CR>
     endif
 
@@ -914,6 +914,39 @@ call pathogen#helptags()
     endif
 
     " }}} tagbar
+
+    " vimux {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/vimux/plugin/vimux.vim'))
+        " Run the current file with python3
+        augroup vimuxruncmd:
+            autocmd!
+            autocmd Filetype python nnoremap <buffer> <Leader>rr :update<Bar>:call VimuxRunCommandInDir("clear; python3 " . bufname("%"), 0)<CR>
+        augroup END
+
+        " Run REPL with python3
+        map <Leader>rp :call VimuxRunCommand("clear; python3", 0)<CR>
+
+        " Prompt for a command to run
+        map <Leader>vp :VimuxPromptCommand<CR>
+
+        " Run last command executed by VimuxRunCommand
+        map <Leader>vl :VimuxRunLastCommand<CR>
+
+        " Inspect runner pane
+        map <Leader>vi :VimuxInspectRunner<CR>
+
+        " Close vim tmux runner opened by VimuxRunCommand
+        map <Leader>vq :VimuxCloseRunner<CR>
+
+        " Interrupt any command running in the runner pane
+        map <Leader>vx :VimuxInterruptRunner<CR>
+
+        " Zoom the runner pane (use <bind-key> z to restore runner pane)
+        map <Leader>vz :call VimuxZoomRunner()<CR>
+    endif
+
+    " }}} vimux
 
 " }}} Plugin Settings
 

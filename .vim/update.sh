@@ -39,6 +39,7 @@ repos=(
   lervag/vimtex
   # easymotion/vim-easymotion
   majutsushi/tagbar
+  benmills/vimux
 
 )
 
