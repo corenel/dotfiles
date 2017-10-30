@@ -36,6 +36,8 @@ repos=(
   Chiel92/vim-autoformat
   honza/vim-snippets
   SirVer/ultisnips
+  lervag/vimtex
+  # easymotion/vim-easymotion
 
 )
 

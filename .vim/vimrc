@@ -459,6 +459,10 @@ call pathogen#helptags()
     nmap <C-x>o <C-w><C-w>
     nmap <M-o>  <C-w><C-w>
 
+    " Add new line without entering insert mode
+    nmap <S-Enter> O<Esc>
+    nmap <CR> o<Esc>
+
     " Emacs-like bindings in insert mode
     imap <C-e> <C-o>$
     imap <C-a> <C-o>0
@@ -859,6 +863,49 @@ call pathogen#helptags()
     endif
 
     " }}} ultisnips
+
+    " vimtex {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/vimtex/autoload/vimtex.vim'))
+        let g:completor_tex_omni_trigger = '\\\\(:?'
+        \ . '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+        \ . '|hyperref\s*\[[^]]*'
+        \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+        \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|\w*'
+        \ . ')$'
+    endif
+
+    " }}} vimtex
+
+    " " easymotion {{{
+
+    " if filereadable(expand('$HOME/.vim/bundle/easymotion/autoload/easymotion.vim'))
+    "     map <Leader> <Plug>(easymotion-prefix)
+
+    "     " <Leader>f{char} to move to {char}
+    "     map  <Leader>f <Plug>(easymotion-bd-f)
+    "     nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+    "     " s{char}{char} to move to {char}{char}
+    "     nmap s <Plug>(easymotion-overwin-f2)
+
+    "     " Move to line
+    "     map <Leader>L <Plug>(easymotion-bd-jk)
+    "     nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+    "     " Move to word
+    "     map  <Leader>w <Plug>(easymotion-bd-w)
+    "     nmap <Leader>w <Plug>(easymotion-overwin-w)
+    " endif
+
+    " " }}} easymotion
 
 " }}} Plugin Settings
 
