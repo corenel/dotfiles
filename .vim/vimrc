@@ -694,13 +694,21 @@ call pathogen#helptags()
         let g:ale_sign_error = '✗'
         highlight link ALEWarningSign String
         highlight link ALEErrorSign Title
+        let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
         let g:ale_linters = {
+        \   'sh' : ['shellcheck'],
         \   'python': ['autopep8', 'flake8', 'isort', 'mypy', 'pycodestyle', 'yapf'],
         \   'vim': ['vint'],
         \   'xml': ['xmllint'],
         \   'yaml': ['yamllint'],
         \   'text': ['write-good'],
+        \   'markdown' : ['mdl'],
         \}
+
+        nmap <Leader>en <Plug>(ale_next)
+        nmap <Leader>ep <Plug>(ale_previous)
+        nnoremap <Leader>ts :ALEToggle<CR>
     endif
 
     " }}} ALE
@@ -794,7 +802,7 @@ call pathogen#helptags()
     if filereadable(expand('$HOME/.vim/bundle/completor.vim/plugin/completor.vim'))
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-        inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+        inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
     endif
 
     " }}} completor.vim
