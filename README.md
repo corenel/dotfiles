@@ -1,6 +1,6 @@
 # dotfiles
 
-My dotfiles on both macOS and Ubuntu. That config runs flawlessly on my workstations with macOS 10.12.6 and Ubuntu 16.04.3 LTS. 
+My dotfiles for both macOS and Ubuntu. That config runs flawlessly on my workstations with macOS 10.12.6 and Ubuntu 16.04.3 LTS. 
 
 ## Usage
 

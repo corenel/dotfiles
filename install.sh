@@ -8,26 +8,6 @@ set -e
 basedir=$HOME/.dotfiles
 repourl=git://github.com/corenel/dotfiles.git
 
-function copy() {
-  src=$1
-  dest=$2
-
-  if [ -e $dest ]; then
-    # Already exists -- I'll assume correctly.
-    return
-  else
-    # Rename files with a ".old" extension.
-    echo "$dest already exists, renaming to $dest.old"
-    backup=$dest.old
-    if [ -e $backup ]; then
-      echo "Error: $backup already exists. Please delete or rename it."
-      exit 1
-    fi
-    mv -v $dest $backup
-  fi
-  cp -fr $src $dest
-}
-
 function symlink() {
   src=$1
   dest=$2
@@ -80,14 +60,21 @@ for path in .* ; do
       ;;
   esac
 done
+
+# special for .vimrc
 symlink $basedir/.vim/vimrc $HOME/.vimrc
-# copy instead of symlink to avoid other new files created later adding into repo
-copy $basedir/.ssh $HOME/.ssh
+
+# just check if ssh config already has github proxy
+mkdir -p $HOME/.ssh/
+if ! grep -q "Host github.com" $HOME/.ssh/config; then
+  cat $basedir/.ssh/config >> $HOME/.ssh/config
+fi
 
 # install/update vim plugins
 echo "Setting up vim plugins..."
 .vim/update.sh
 
+# post-install for specific os
 postinstall=$HOME/.postinstall
 if [ -e $postinstall ]; then
   echo "Running post-install for os-specific dotfiles"
@@ -107,6 +94,9 @@ if [ -e $postinstall ]; then
     case $path in
       .|..)
         continue
+        ;;
+      .config)
+        rsync -rtv $oscustom/$path/ $HOME/.config
         ;;
       *)
         symlink $oscustom/$path $HOME/$path
