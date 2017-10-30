@@ -9,6 +9,7 @@ repos=(
   airblade/vim-gitgutter
   alampros/vim-styled-jsx
   altercation/vim-colors-solarized
+  # ervandew/supertab
   haya14busa/incsearch.vim
   itchyny/lightline.vim
   junegunn/fzf.vim
@@ -32,6 +33,9 @@ repos=(
   mbbill/undotree
   terryma/vim-multiple-cursors
   maralla/completor.vim
+  Chiel92/vim-autoformat
+  honza/vim-snippets
+  SirVer/ultisnips
 
 )
 
