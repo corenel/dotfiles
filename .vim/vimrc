@@ -326,13 +326,10 @@ call pathogen#helptags()
 
         " set completeopt=menu,preview,longest
         " set pumheight=10
-        " automatically open and close the popup menu / preview window
+        " " automatically open and close the popup menu / preview window
         " if !exists('g:noautoclosepum')
         "     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         " endif
-
-        " When <Enter> is pressed while the popup menu is visible, hide the menu and also start a new line.
-        " inoremap <expr> <CR> (pumvisible() ? '\<c-y>\<cr>' : '\<CR>')
 
         " Return to last edit position when opening files (You want this!)
         augroup lastpos:
@@ -404,14 +401,6 @@ call pathogen#helptags()
 
         set splitright " Puts new vsplit windows to the right of the current
         set splitbelow " Puts new split windows to the bottom of the current
-
-        " Split management
-        nnoremap <silent> [b :bprevious<cr>
-        nnoremap <silent> ]b :bnext<cr>
-        nmap <silent> <C-k> :exe 'resize ' . (winheight(0) * 3/2)<CR>
-        nmap <silent> <C-j> :exe 'resize ' . (winheight(0) * 2/3)<CR>
-        nmap <silent> <C-h> :exe 'vertical resize ' . (winwidth(0) * 3/2)<CR>
-        nmap <silent> <C-l> :exe 'vertical resize ' . (winwidth(0) * 2/3)<CR>
 
         " }}} FileExplorer
 
@@ -671,14 +660,14 @@ call pathogen#helptags()
 
     " }}} GitGutter
 
-    " SuperTab {{{
+    " " SuperTab {{{
 
-    if filereadable(expand('$HOME/.vim/bundle/supertab.vim/plugin/supertab.vim'))
-        let g:SuperTabLongestEnhanced=1
-        let g:SuperTabLongestHighlight=1
-    endif
+    " if filereadable(expand('$HOME/.vim/bundle/supertab.vim/plugin/supertab.vim'))
+    "     let g:SuperTabLongestEnhanced=1
+    "     let g:SuperTabLongestHighlight=1
+    " endif
 
-    " }}} SuperTab
+    " " }}} SuperTab
 
     " incsearch.vim {{{
 
@@ -706,7 +695,7 @@ call pathogen#helptags()
         highlight link ALEWarningSign String
         highlight link ALEErrorSign Title
         let g:ale_linters = {
-        \   'python': ['pylint', 'autopep8', 'flake8', 'isort', 'mypy', 'pycodestyle', 'yapf'],
+        \   'python': ['autopep8', 'flake8', 'isort', 'mypy', 'pycodestyle', 'yapf'],
         \   'vim': ['vint'],
         \   'xml': ['xmllint'],
         \   'yaml': ['yamllint'],
@@ -799,6 +788,16 @@ call pathogen#helptags()
         endfunction
     endif
     " }}} vim-multiple-cursors
+
+    " completor.vim {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/completor.vim/plugin/completor.vim'))
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+    endif
+
+    " }}} completor.vim
 
 " }}} Plugin Settings
 
