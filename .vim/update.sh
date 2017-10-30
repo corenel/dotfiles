@@ -18,6 +18,7 @@ repos=(
   nathanaelkane/vim-indent-guides
   qpkorr/vim-bufkill
   scrooloose/nerdtree
+  sheerun/vim-polyglot
   tomasr/molokai
   tpope/vim-commentary
   tpope/vim-eunuch
