@@ -731,8 +731,8 @@ call pathogen#helptags()
         \             [ 'gitbranch', 'filename', 'modified' ] ],
         \   'right': [ [ 'lineinfo' ],
         \              [ 'percent' ],
-        \              [ 'fileformat', 'fileencoding', 'filetype' ],
-        \              [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ] ]
+        \              [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ],
+        \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
         \ },
         \ 'component_function': {
         \   'gitbranch': 'fugitive#head',
