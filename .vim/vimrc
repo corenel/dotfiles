@@ -999,7 +999,8 @@ call pathogen#helptags()
             \ {'c': '$HOME/.vim/vimrc.local'},
             \ {'z': '$HOME/.zshrc.custom'},
             \ {'h': '$HOME/.ssh/config'},
-            \ {'o': '$HOME/Dropbox/Documents/Orgzly/'}
+            \ {'o': '$HOME/Dropbox/Documents/Orgzly/'},
+            \ {'w': '$HOME/Workspace/'}
             \ ]
 
         let g:startify_session_dir        = '$HOME/.vim/.tmp/session'
@@ -1044,6 +1045,14 @@ call pathogen#helptags()
     endif
 
     " }}} python-mode
+
+    " vim-orgmode {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/vim-orgmode/syntax/org.vim'))
+        let g:org_todo_keywords = ['TODO', 'NEXT', '|', 'DONE']
+    endif
+
+    " }}} vim-orgmode
 
 " }}} Plugin Settings
 
