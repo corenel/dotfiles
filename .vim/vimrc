@@ -875,10 +875,11 @@ call pathogen#helptags()
     " vim-autoformat {{{
 
     if filereadable(expand('$HOME/.vim/bundle/vim-autoformat/plugin/autoformat.vim'))
-        let g:formatters_python = ['yapf']
         let g:formatter_yapf_style = 'google'
+        let g:formatters_python = ['yapf']
         let g:formatters_c = ['clangformat']
         let g:formatters_cpp = ['clangformat']
+        " let g:autoformat_verbosemode = 1
         augroup vimautoformat:
             autocmd!
             autocmd BufWrite *.py :Autoformat
@@ -1042,7 +1043,9 @@ call pathogen#helptags()
         " use rope for refactoring
         let g:pymode_rope = 1
         let g:pymode_rope_lookup_project = 0
+        let g:pymode_rope_autoimport = 1
     endif
+
 
     " }}} python-mode
 
@@ -1091,6 +1094,7 @@ augroup vimrc
     au BufNewFile,BufRead COMMIT_EDITMSG setlocal nolist nonumber
     au BufNewFile,BufRead Makefile setlocal nolist
     au FileType gitcommit setlocal nolist ts=4 sts=4 sw=4 noet
+    au FileType python setlocal tw=79
     au FileType inform7 setlocal nolist tw=0 ts=4 sw=4 noet foldlevel=999
     au FileType json setlocal conceallevel=0 foldmethod=syntax foldlevel=999
     au FileType make setlocal nolist ts=4 sts=4 sw=4 noet
