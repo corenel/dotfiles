@@ -3,15 +3,16 @@ export CUDA_HOME=/usr/local/cuda
 
 # package manager
 export apt_pref='apt-get' # change to apt-fast if you like
+
 alias aac='sudo $apt_pref autoclean'
-alias aupd='sudo $apt_pref update'
-alias aupg='sudo $apt_pref upgrade'
-alias audg='sudo $apt_pref update && sudo $apt_pref upgrade'
+alias acs='apt-cache search'
+alias ai='sudo $apt_pref install'
 alias apge='sudo $apt_pref purge'
 alias arm='sudo $apt_pref remove'
+alias audg='sudo $apt_pref update && sudo $apt_pref upgrade'
+alias aupd='sudo $apt_pref update'
+alias aupg='sudo $apt_pref upgrade'
 alias di='sudo dpkg -i'
-alias ai='sudo $apt_pref install'
-alias acs='apt-cache search'
 
 # shadowsocks
 alias ss='$HOME/proxyservice on'

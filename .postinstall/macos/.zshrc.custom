@@ -1,5 +1,26 @@
-# homebrew
+# homebrew mirror
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+# homebrew
+alias bf='brew info'
+alias bi='brew install'
+alias bl='brew list'
+alias brm='brew uninstall'
+alias bs='brew search'
+alias budg='brew update && brew upgrade'
+alias bupd='brew update'
+alias bupg='brew upgrade'
+
+# homebrew cask
+alias bcc='brew cask clean'
+alias bcf='brew cask info'
+alias bci='brew cask install'
+alias bcl='brew cask list'
+alias bco='brew cask outdated'
+alias bcri='brew cask reinstall'
+alias bcrm='brew cask uninstall'
+alias bcs='brew cask search'
+alias bcu='brew cask outdated | xargs brew reinstall'
 
 # nvm
 function nvm_on () {

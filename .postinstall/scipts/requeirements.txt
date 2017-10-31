@@ -1,40 +1,41 @@
 # python linters and formatters
 autopep8
-pylint
-pylama
-pyflake
-jedi
 isort
+jedi
 mccabe
 mypy
 prospector
-yapf
+pyflake
+pylama
+pylint
+rope
 vim-vint
 yamllint
+yapf
 
 # cpp linters
 cpplint
 
 # common packages
+#opencv-python
+Pillow
 jupyter
 lxml
-scipy
 numpy
-Pillow
-six
-sk-video
 scikit-image
 scikit-learn
-#opencv-python
+scipy
+six
+sk-video
 
 # virtualenv
 virtualenvwrapper
 
 # deep learning
-#torch
-#torchvision
 #mxnet
 #tensorflow
+#torch
+#torchvision
 
 # special utils
 tmuxp

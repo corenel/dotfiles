@@ -6,19 +6,32 @@
 
 repos=(
 
+  # easymotion/vim-easymotion
+  # ervandew/supertab
+  Chiel92/vim-autoformat
+  SirVer/ultisnips
   airblade/vim-gitgutter
   alampros/vim-styled-jsx
   altercation/vim-colors-solarized
-  # ervandew/supertab
+  benmills/vimux
   haya14busa/incsearch.vim
+  honza/vim-snippets
   itchyny/lightline.vim
+  jceb/vim-orgmode
   junegunn/fzf.vim
   junegunn/goyo.vim
+  lervag/vimtex
+  majutsushi/tagbar
+  maralla/completor.vim
+  mbbill/undotree
+  mhinz/vim-startify
   mileszs/ack.vim
   nathanaelkane/vim-indent-guides
+  python-mode/python-mode
   qpkorr/vim-bufkill
   scrooloose/nerdtree
   sheerun/vim-polyglot
+  terryma/vim-multiple-cursors
   tomasr/molokai
   tpope/vim-commentary
   tpope/vim-eunuch
@@ -27,24 +40,11 @@ repos=(
   tpope/vim-repeat
   tpope/vim-rhubarb
   tpope/vim-sleuth
+  tpope/vim-speeddating
   tpope/vim-surround
   tpope/vim-unimpaired
   w0rp/ale
   wellle/targets.vim
-  mbbill/undotree
-  terryma/vim-multiple-cursors
-  maralla/completor.vim
-  Chiel92/vim-autoformat
-  honza/vim-snippets
-  SirVer/ultisnips
-  lervag/vimtex
-  # easymotion/vim-easymotion
-  majutsushi/tagbar
-  benmills/vimux
-  mhinz/vim-startify
-  jceb/vim-orgmode
-  tpope/vim-speeddating
-  python-mode/python-mode
 
 )
 
