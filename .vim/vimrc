@@ -386,7 +386,6 @@ call pathogen#helptags()
 
         " Specify the behavior when switching between buffers
         set switchbuf=useopen
-        set showtabline=1
 
         " }}} BufferSwitch
 
@@ -427,7 +426,6 @@ call pathogen#helptags()
     " nmap \c :call TmuxPaneClear()<CR>
     " nmap \l :setlocal number!<CR>:setlocal number?<CR>
     " nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
-    " nmap \q :nohlsearch<CR>
     " nmap \r :call TmuxPaneRepeat()<CR>
     " nmap \s :setlocal invspell<CR>
     " nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
@@ -439,12 +437,13 @@ call pathogen#helptags()
     nmap \e :NERDTreeToggle<CR>
     nmap \f mt:Goyo<CR>'tzz
     nmap \g :Gstatus<CR>
+    nmap \h :nohlsearch<CR>
     nmap \i vip:sort<CR>
     nmap \o :set paste!<CR>:set paste?<CR>
     nmap \p :ProseMode<CR>
+    nmap \v :Startify<CR>
     nmap \x :cclose<CR>
     nmap \z :w<CR>:!open %<CR><CR>
-    nmap \v :Startify<CR>
 
     " You don't know what you're missing if you don't use this.
     nmap <C-e> :e#<CR>
@@ -452,6 +451,10 @@ call pathogen#helptags()
     " Move between open buffers.
     nmap <C-n> :bnext<CR>
     nmap <C-p> :bprev<CR>
+
+    " Move between open tabs.
+    nmap <C-f> :tabnext<CR>
+    nmap <C-b> :tabprev<CR>
 
     " Add new line without entering insert mode
     nmap <S-Enter> O<Esc>
@@ -724,8 +727,17 @@ call pathogen#helptags()
         let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'active': {
-        \   'left': [['mode', 'paste'], ['filename', 'modified']],
-        \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'filename', 'modified' ] ],
+        \   'right': [ [ 'lineinfo' ],
+        \              [ 'percent' ],
+        \              [ 'fileformat', 'fileencoding', 'filetype' ],
+        \              [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head',
+        \   'fileformat': 'LightlineFileformat',
+        \   'filetype': 'LightlineFiletype',
         \ },
         \ 'component_expand': {
         \   'linter_warnings': 'LightlineLinterWarnings',
@@ -738,18 +750,36 @@ call pathogen#helptags()
         \   'linter_errors': 'error'
         \ },
         \ }
+
+        let g:lightline.tabline = {
+        \ 'left': [ [ 'tabs' ] ],
+        \ 'right': [ [ 'close' ] ]
+        \ }
+        set showtabline=2  " Show tabline
+        set guioptions-=e  " Don't use GUI tabline
+
+        function! LightlineFileformat()
+        return winwidth(0) > 70 ? &fileformat : ''
+        endfunction
+
+        function! LightlineFiletype()
+        return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+        endfunction
+
         function! LightlineLinterWarnings() abort
             let l:counts = ale#statusline#Count(bufnr(''))
             let l:all_errors = l:counts.error + l:counts.style_error
             let l:all_non_errors = l:counts.total - l:all_errors
             return l:counts.total == 0 ? '' : printf('%d ◆', l:all_non_errors)
         endfunction
+
         function! LightlineLinterErrors() abort
             let l:counts = ale#statusline#Count(bufnr(''))
             let l:all_errors = l:counts.error + l:counts.style_error
             let l:all_non_errors = l:counts.total - l:all_errors
             return l:counts.total == 0 ? '' : printf('%d ✗', l:all_errors)
         endfunction
+
         function! LightlineLinterOK() abort
             let l:counts = ale#statusline#Count(bufnr(''))
             let l:all_errors = l:counts.error + l:counts.style_error
@@ -762,6 +792,7 @@ call pathogen#helptags()
             autocmd!
             autocmd User ALELint call s:MaybeUpdateLightline()
         augroup END
+
         function! s:MaybeUpdateLightline()
             if exists('#lightline')
                 call lightline#update()
