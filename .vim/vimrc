@@ -435,6 +435,7 @@ call pathogen#helptags()
     " nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
     nmap \A :set formatoptions+=a<CR>:echo "autowrap enabled"<CR>
     nmap \a :set formatoptions-=a<CR>:echo "autowrap disabled"<CR>
+    nmap \c :CLEAN<CR>:TEOL<CR>
     nmap \e :NERDTreeToggle<CR>
     nmap \f mt:Goyo<CR>'tzz
     nmap \g :Gstatus<CR>
@@ -443,6 +444,7 @@ call pathogen#helptags()
     nmap \p :ProseMode<CR>
     nmap \x :cclose<CR>
     nmap \z :w<CR>:!open %<CR><CR>
+    nmap \v :Startify<CR>
 
     " You don't know what you're missing if you don't use this.
     nmap <C-e> :e#<CR>
@@ -950,12 +952,33 @@ call pathogen#helptags()
 
     " startify {{{
 
-    if filereadable(expand('$HOME/.vim/bundle/startify/plugin/startify.vim'))
-        let g:startify_session_dir = '$HOME/.vim/.tmp/session'
-        let g:startify_bookmarks = [ {'v': '$HOME/.vim/vimrc.local'},
-                                   \ {'z': '$HOME/.zshrc.custom'},
-                                   \ {'s': '$HOME/.ssh/config'}
-                                   \ ]
+    if filereadable(expand('$HOME/.vim/bundle/vim-startify/plugin/startify.vim'))
+        augroup startifycustom:
+            autocmd!
+            autocmd User Startified setlocal cursorline
+        augroup END
+
+        let g:startify_bookmarks = [
+            \ {'c': '$HOME/.vim/vimrc.local'},
+            \ {'z': '$HOME/.zshrc.custom'},
+            \ {'h': '$HOME/.ssh/config'}
+            \ ]
+
+        let g:startify_session_dir        = '$HOME/.vim/.tmp/session'
+        let g:startify_change_to_vcs_root = 1
+        let g:startify_update_oldfiles    = 1
+        let g:startify_change_to_dir      = 1
+        let g:startify_files_number       = 8
+
+
+        hi StartifyBracket ctermfg=240
+        hi StartifyFile    ctermfg=147
+        hi StartifyFooter  ctermfg=240
+        hi StartifyHeader  ctermfg=114
+        hi StartifyNumber  ctermfg=215
+        hi StartifyPath    ctermfg=245
+        hi StartifySlash   ctermfg=240
+        hi StartifySpecial ctermfg=240
     endif
 
     " }}} startify
