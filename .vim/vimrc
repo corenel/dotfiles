@@ -453,14 +453,6 @@ call pathogen#helptags()
     nmap <C-n> :bnext<CR>
     nmap <C-p> :bprev<CR>
 
-    " Emacs-like bindings in normal mode
-    nmap <C-x>0 <C-w>c
-    nmap <C-x>1 <C-w>o
-    nmap <C-x>1 <C-w>s
-    nmap <C-x>1 <C-w>v
-    nmap <C-x>o <C-w><C-w>
-    nmap <M-o>  <C-w><C-w>
-
     " Add new line without entering insert mode
     nmap <S-Enter> O<Esc>
     nmap <CR> o<Esc>
@@ -961,7 +953,8 @@ call pathogen#helptags()
         let g:startify_bookmarks = [
             \ {'c': '$HOME/.vim/vimrc.local'},
             \ {'z': '$HOME/.zshrc.custom'},
-            \ {'h': '$HOME/.ssh/config'}
+            \ {'h': '$HOME/.ssh/config'},
+            \ {'o': '$HOME/Dropbox/Documents/Orgzly/'}
             \ ]
 
         let g:startify_session_dir        = '$HOME/.vim/.tmp/session'
@@ -982,6 +975,30 @@ call pathogen#helptags()
     endif
 
     " }}} startify
+
+    " python-mode {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/python-mode/plugin/pymode.vim'))
+        " general settings
+        let g:pymode_python = 'python3'
+        let g:pymode_paths = [
+            \ '/usr/local/lib/python3.6/site-packages',
+            \ '/usr/local/lib/python3.5/dist-packages'
+            \ ]
+
+        " virtualenv
+        let g:pymode_virtualenv = 0
+        let g:pymode_virtualenv_path = $VIRTUAL_ENV
+
+        " use ale instead of pymode_lint
+        let g:pymode_lint = 0
+
+        " use rope for refactoring
+        let g:pymode_rope = 1
+        let g:pymode_rope_lookup_project = 0
+    endif
+
+    " }}} python-mode
 
 " }}} Plugin Settings
 

@@ -42,6 +42,9 @@ repos=(
   majutsushi/tagbar
   benmills/vimux
   mhinz/vim-startify
+  jceb/vim-orgmode
+  tpope/vim-speeddating
+  python-mode/python-mode
 
 )
 
