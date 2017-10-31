@@ -41,6 +41,7 @@ repos=(
   # easymotion/vim-easymotion
   majutsushi/tagbar
   benmills/vimux
+  mhinz/vim-startify
 
 )
 

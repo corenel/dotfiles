@@ -948,6 +948,18 @@ call pathogen#helptags()
 
     " }}} vimux
 
+    " startify {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/startify/plugin/startify.vim'))
+        let g:startify_session_dir = '$HOME/.vim/.tmp/session'
+        let g:startify_bookmarks = [ {'v': '$HOME/.vim/vimrc.local'},
+                                   \ {'z': '$HOME/.zshrc.custom'},
+                                   \ {'s': '$HOME/.ssh/config'}
+                                   \ ]
+    endif
+
+    " }}} startify
+
 " }}} Plugin Settings
 
 " Filetype triggers {{{
@@ -996,8 +1008,8 @@ augroup END
 " Post {{{
 
 " Now load specifics to this host
-if filereadable(expand('$HOME/.vimlocal'))
-    source $HOME/.vimlocal
+if filereadable(expand('$HOME/.vimrc.local'))
+    source $HOME/.vimrc.local
 endif
 
 " Some plugin seems to search for something at startup, so this fixes that.
