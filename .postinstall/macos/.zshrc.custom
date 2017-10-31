@@ -23,10 +23,7 @@ alias bcs='brew cask search'
 alias bcu='brew cask outdated | xargs brew reinstall'
 
 # nvm
-function nvm_on () {
-  export NVM_DIR='$HOME/.nvm'
-  . '/usr/local/opt/nvm/nvm.sh'
-}
+alias nvm_on='export NVM_DIR=$HOME/.nvm && . /usr/local/opt/nvm/nvm.sh'
 
 # utils
 alias typora='open -a typora'
