@@ -5,7 +5,7 @@ jedi
 mccabe
 mypy
 prospector
-pyflake
+flake8
 pylama
 pylint
 rope
