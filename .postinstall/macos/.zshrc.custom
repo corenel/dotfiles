@@ -1,3 +1,6 @@
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # homebrew mirror
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 

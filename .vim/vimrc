@@ -984,6 +984,18 @@ call pathogen#helptags()
 
         " Zoom the runner pane (use <bind-key> z to restore runner pane)
         map <Leader>vz :call VimuxZoomRunner()<CR>
+
+        " Toggle pane
+        map <Leader>vt :call VimuxTogglePane()<CR>
+
+        " Always use vertical split pane
+        let g:VimuxOrientation = 'v'
+
+        " Always create new pane
+        let g:VimuxUseNearest = 0
+
+        " Vimux height percent
+        let g:VimuxHeight = '20'
     endif
 
     " }}} vimux
