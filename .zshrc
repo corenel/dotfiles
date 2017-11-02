@@ -43,19 +43,19 @@ alias ci='git add . && git commit -m "ci" && git push'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS}'
 alias hst='fc -El 0'
-alias hsp='fc -El 0 | grep'
+alias hsg='fc -El 0 | grep'
 alias psg='ps ax | grep'
 # head and tail
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g L="| less"
-alias -g M="| most"
-alias -g LL="2>&1 | less"
-alias -g CA="2>&1 | cat -A"
-alias -g NE="2> /dev/null"
-alias -g NUL="> /dev/null 2>&1"
-alias -g P="2>&1| pygmentize -l pytb"
+# alias -g H='| head'
+# alias -g T='| tail'
+# alias -g G='| grep'
+# alias -g L="| less"
+# alias -g M="| most"
+# alias -g LL="2>&1 | less"
+# alias -g CA="2>&1 | cat -A"
+# alias -g NE="2> /dev/null"
+# alias -g NUL="> /dev/null 2>&1"
+# alias -g P="2>&1| pygmentize -l pytb"
 # find
 alias fd='find . -type d -name' # find directories in current path
 alias ff='find . -type f -name' # find files in current path
@@ -69,7 +69,7 @@ alias chmod='chmod -v'
 alias chown='chown -v'
 alias rename='rename -v'
 # tmux
-alias t='TERM=xterm-256color tmux'
+alias t='TERM=screen-256color tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias ts='t new -s'
