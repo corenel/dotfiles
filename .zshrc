@@ -76,12 +76,12 @@ alias ts='t new -s'
 alias tks='t kill-session -t'
 alias tkw='t kill-window -t'
 alias tpl='TERM=screen-256color tmuxp load'
-
-function tpr (ssh_host) {
-  export remote=ssh_host
-  tmuxp load remote
+alias ssh-remote='command -v echo $remote >/dev/null 2>&1 || { ssh "$remote" }'
+function tpcall() {
+  for _pane in $(tmux list-panes -a -F '#{pane_id}'); do
+    tmux send-key -t ${_pane} C-z "$1" Enter
+  done
 }
-
 # python
 alias py3='python3'
 alias py2='python2'
