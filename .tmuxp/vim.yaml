@@ -1,7 +1,8 @@
 ---
-session_name: remote-workspace
+session_name: vim-workspace
+start_directory: $HOME/Workspace
 windows:
-  - window_name: remote-dev
+  - window_name: vim-dev
     focus: true
     layout: even-horizontal
     panes:
@@ -9,9 +10,11 @@ windows:
           - tmux split-window -h -t 0.0
           - tmux split-window -v -t 0.1
           - tmux select-pane -t 0.0
-          - twcall "ssh-remote"
+          - tmux send-key -t 0.1 C-z "reset" Enter
+          - tmux send-key -t 0.2 C-z "reset" Enter
+          - vim
         focus: true
-  - window_name: local-dev
+  - window_name: vim-debug
     layout: tiled
     panes:
       - reset

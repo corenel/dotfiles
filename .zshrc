@@ -1,6 +1,6 @@
 export DISABLE_AUTO_TITLE='true'
 export ZSH=$HOME/.oh-my-zsh
-export TERM=xterm-256color
+export TERM=screen-256color
 export GTEST_COLOR=1
 export EDITOR='vim'
 # export CXX="ccache clang++"
@@ -69,15 +69,32 @@ alias chmod='chmod -v'
 alias chown='chown -v'
 alias rename='rename -v'
 # tmux
-alias t='TERM=screen-256color tmux'
-alias tl='t list-sessions'
-alias ta='t attach -t'
-alias ts='t new -s'
-alias tks='t kill-session -t'
-alias tkw='t kill-window -t'
-alias tpl='TERM=screen-256color tmuxp load'
-alias ssh-remote='command -v echo $remote >/dev/null 2>&1 || { ssh "$remote" }'
-function tpcall() {
+alias t='tmux'
+alias tl='tmux list-sessions'
+alias ta='tmux attach -t'
+alias ts='tmux new -s'
+alias tks='tmux kill-session -t'
+alias tkw='tmux kill-window -t'
+alias tload='tmuxp load'
+# alias ssh-remote='command -v echo $remote >/dev/null 2>&1 || { ssh "$remote" -t "TERM=screen-256color clear && zsh" }'
+function ssh-remote() {
+  if [[ "$remote" ]] ; then
+    ssh "$remote" -t "reset && zsh"
+  else
+    reset
+  fi
+}
+function twcall() {
+  for _pane in $(tmux list-panes -F '#{pane_id}'); do
+    tmux send-key -t ${_pane} C-z "$1" Enter
+  done
+}
+function tscall() {
+  for _pane in $(tmux list-panes -s -F '#{pane_id}'); do
+    tmux send-key -t ${_pane} C-z "$1" Enter
+  done
+}
+function tacall() {
   for _pane in $(tmux list-panes -a -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
