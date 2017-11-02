@@ -6,7 +6,7 @@ set -e
 
 # define constant
 basedir=$HOME/.dotfiles
-repourl=git://github.com/corenel/dotfiles.git
+repourl=https://github.com/corenel/dotfiles.git
 
 function symlink() {
   src=$1

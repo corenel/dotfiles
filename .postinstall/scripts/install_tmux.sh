@@ -1,25 +1,37 @@
 #!/usr/bin/env bash
 
-# uninstall installed tmux
-sudo apt-get remove tmux
-sudo apt-get remove 'libevent-*'
+tmux_ver=2.6
+libevent_ver=2.1.8
+TMP=$HOME/.tmp
 
-# download tmux 2.6
-wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-tar xvzf tmux-2.6.tar.gz
+# uninstall installed tmux
+sudo apt-get remove -y tmux
+sudo apt-get remove -y 'libevent-*'
+
+# install libncurses
+sudo apt-get install -y libncurses5-dev
+
+# download source
+mkdir -p $TMP
+cd $TMP
+
+if [[ ! -d "tmux-$tmux_ver" ]]; then
+    wget "https://github.com/tmux/tmux/releases/download/$tmux_ver/tmux-$tmux_ver.tar.gz"
+    tar xvzf "tmux-$tmux_ver.tar.gz"
+fi
+
+if [[ ! -d "libevent-$libevent_ver-stable" ]]; then
+    wget "https://github.com/libevent/libevent/releases/download/release-$libevent_ver-stable/libevent-$libevent_ver-stable.tar.gz"
+    tar xvzf "libevent-$libevent_ver-stable.tar.gz"
+fi
 
 # install libevent
-wget https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
-tar xvzf libevent-2.1.8-stable.tar.gz
-cd libevent-2.1.8-stable
-./configure && make
+cd "libevent-$libevent_ver-stable"
+./configure && make -j$nproc
 sudo make install
 cd ..
 
-# install libncurses
-sudo apt-get install libncurses5-dev
-
 # build tmux and install
-cd tmux-2.6
-./configure && make
+cd "tmux-$tmux_ver"
+./configure && make -j$nproc
 sudo make install
