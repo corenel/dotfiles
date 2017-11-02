@@ -76,29 +76,55 @@ alias ts='tmux new -s'
 alias tks='tmux kill-session -t'
 alias tkw='tmux kill-window -t'
 alias tload='tmuxp load'
-# alias ssh-remote='command -v echo $remote >/dev/null 2>&1 || { ssh "$remote" -t "TERM=screen-256color clear && zsh" }'
-function ssh-remote() {
-  if [[ "$remote" ]] ; then
-    ssh "$remote" -t "reset && zsh"
-  else
-    reset
-  fi
+alias ffk='set-remote && tmuxp load remote'
+
+function reset-remote() {
+  echo "reset remote ssh host:"
+  read REMOTE
+  tmux setenv -g REMOTE $REMOTE
 }
-function twcall() {
+
+function set-remote () {
+  ssh -q $REMOTE exit
+  while [[ $? -ne 0 ]]; do
+      echo "invalid remote: $REMOTE"
+      reset-remote
+      ssh -q "$REMOTE" exit
+  done
+  echo "valid ssh host: $REMOTE"
+}
+
+function ssh-remote () {
+  # if [[ ("$REMOTE" && ! "$REMOTE" = "-REMOTE") ]] ; then
+  if [[ ("$REMOTE") ]] ; then
+    echo "use remote: $REMOTE"
+  elif [[ $(tmux show-environment -g REMOTE | sed "s:^.*=::") ]] ; then
+    export REMOTE=$(tmux show-environment -g REMOTE | sed "s:^.*=::")
+    echo "use global remote env: $REMOTE"
+  else
+    set-remote
+  fi
+  ssh "$REMOTE" -t "reset && $SHELL"
+}
+
+function twcall () {
   for _pane in $(tmux list-panes -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
 }
-function tscall() {
+
+function tscall () {
   for _pane in $(tmux list-panes -s -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
 }
-function tacall() {
+
+function tacall () {
   for _pane in $(tmux list-panes -a -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
 }
+
 # python
 alias py3='python3'
 alias py2='python2'
