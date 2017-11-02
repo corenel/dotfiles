@@ -1,0 +1,29 @@
+---
+session_name: remote-workspace
+windows:
+  - window_name: remote
+    focus: true
+    layout: even-horizontal
+    shell_command_before:
+      - command -v echo $remote >/dev/null 2>&1 || { ssh "$remote" }
+    panes:
+      - shell_command:
+          - clear
+        focus: true
+      - shell_command:
+          - tmux split-window -v -t 0.1
+          - tmux select-pane -t 0.0
+          - clear
+  - window_name: local
+    layout: tiled
+    shell_command_before:
+      - cd $HOME/Workspace
+    panes:
+      - shell_command:
+          - clear
+      - shell_command:
+          - clear
+      - shell_command:
+          - clear
+      - shell_command:
+          - clear

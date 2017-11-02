@@ -70,12 +70,18 @@ alias chown='chown -v'
 alias rename='rename -v'
 # tmux
 alias t='TERM=screen-256color tmux'
-alias tl='tmux list-sessions'
-alias ta='tmux attach -t'
+alias tl='t list-sessions'
+alias ta='t attach -t'
 alias ts='t new -s'
-alias tks='tmux kill-session -t'
-alias tkw='tmux kill-window -t'
-alias tpl='tmuxp load'
+alias tks='t kill-session -t'
+alias tkw='t kill-window -t'
+alias tpl='TERM=screen-256color tmuxp load'
+
+function tpr (ssh_host) {
+  export remote=ssh_host
+  tmuxp load remote
+}
+
 # python
 alias py3='python3'
 alias py2='python2'
