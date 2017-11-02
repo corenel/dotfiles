@@ -72,6 +72,7 @@ fi
 
 # install/update vim plugins
 echo "Setting up vim plugins..."
+mkdir -p $HOME/.vim/files/info
 .vim/update.sh
 
 # post-install for specific os

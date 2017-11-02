@@ -45,6 +45,9 @@ call pathogen#helptags()
             endif
         endif
 
+        " set viminfo
+        set viminfo='100,n$HOME/.vim/files/info/viminfo
+
         " }}} Options
 
         " Encoding {{{
