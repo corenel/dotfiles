@@ -28,6 +28,9 @@ alias bcu='brew cask outdated | xargs brew reinstall'
 # nvm
 alias nvm_on='export NVM_DIR=$HOME/.nvm && . /usr/local/opt/nvm/nvm.sh'
 
+# travis gem
+alias travis_on ='[ -f $HOME/.travis/travis.sh ] && source /Users/yuthon/.travis/travis.sh'
+
 # utils
 alias typora='open -a typora'
 

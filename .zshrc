@@ -177,7 +177,7 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
 # custom
 source $HOME/.zshrc.custom
