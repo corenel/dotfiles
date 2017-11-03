@@ -36,7 +36,8 @@ alias zs='$EDITOR $HOME/.ssh/config'
 alias zv='$EDITOR $HOME/.vim/vimrc'
 alias zt='$EDITOR $HOME/.tmux.conf'
 alias uv='$HOME/.vim/update.sh'
-alias ud='$HOME/.dotfiles/install.sh'
+alias ud='cd $.dotfiles/ && git pull && cd -'
+alias ud='cd $.dotfiles-personal/ && git pull && cd -'
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
