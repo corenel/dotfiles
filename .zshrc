@@ -29,10 +29,12 @@ source $ZSH/oh-my-zsh.sh
 # Alias
 # edit config
 alias sc='source $HOME/.zshrc'
+alias st='tmux source $HOME/.tmux.conf'
 alias zc='$EDITOR $HOME/.zshrc'
 alias zcc='$EDITOR $HOME/.zshrc.custom'
 alias zs='$EDITOR $HOME/.ssh/config'
 alias zv='$EDITOR $HOME/.vim/vimrc'
+alias zt='$EDITOR $HOME/.tmux.conf'
 alias uv='$HOME/.vim/update.sh'
 alias ud='$HOME/.dotfiles/install.sh'
 # ls (from common-aliases)
