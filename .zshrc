@@ -162,7 +162,7 @@ alias ss='$HOME/proxyservice on'
 alias ssk='$HOME/proxyservice off'
 
 # proxy
-proxy='http://127.0.0.1:6152'
+proxy='http://10.12.218.233:6152'
 function proxy () {
   export http_proxy=$proxy
   export HTTPS_PROXY=$http_proxy
