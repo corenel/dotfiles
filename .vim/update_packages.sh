@@ -15,10 +15,11 @@ for BASE_DIR in "${HOME}/.vim"; do
   if [[ -d "${BUNDLES_DIR}" ]]; then
     echo "Updating bundles in ${BUNDLES_DIR}..."
     for bundle in "${BUNDLES_DIR}/"*; do
+      echo "${bundle}"
       if [[ -d "${bundle}/.git" ]]; then
         echo "Bundle: ${bundle}..."
         cd "${bundle}"
-        git pull
+        # git pull
       fi
     done
   fi

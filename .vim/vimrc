@@ -37,12 +37,16 @@ call pathogen#helptags()
         silent! set mouse=nvc       " Use the mouse, but not in insert mode
 
         " Enable clipboard if possible
-        if has('clipboard')
-            if has('unnamedplus') " When possible use + register for copy-paste
-                set clipboard=unnamed,unnamedplus
-            else " On mac and Windows, use * register for copy-paste
-                set clipboard=unnamed
-            endif
+        " if has('clipboard')
+        "     if has('unnamedplus') " When possible use + register for copy-paste
+        "         set clipboard=unnamed,unnamedplus
+        "     else " On mac and Windows, use * register for copy-paste
+        "         set clipboard=unnamed
+        "     endif
+        " endif
+
+        if $TMUX ==# ''
+            set clipboard+=unnamed
         endif
 
         " set viminfo
@@ -1104,7 +1108,7 @@ augroup vimrc
     au BufNewFile,BufRead .git/config setlocal ft=gitconfig nolist ts=4 sw=4 noet
     au BufNewFile,BufRead .gitconfig* setlocal ft=gitconfig nolist ts=4 sw=4 noet
     au BufNewFile,BufRead .vimlocal,.gvimlocal setf vim
-    au BufNewFile,BufRead .zshlocal setf zsh
+    au BufNewFile,BufRead .zsh.custom setf zsh
     au BufNewFile,BufRead /tmp/crontab* setf crontab
     au BufNewFile,BufRead COMMIT_EDITMSG setlocal nolist nonumber
     au BufNewFile,BufRead Makefile setlocal nolist
