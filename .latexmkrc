@@ -1,2 +1,1 @@
-$pdf_mode = 1;
-$pdflatex = "xelatex --shell-escape -src-specials -synctex=1 -interaction=nonstopmode %O %S";
+$pdflatex = 'xelatex -synctex=1 -interaction=nonstopmode --shell-escape %O %S';

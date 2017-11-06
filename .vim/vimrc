@@ -935,13 +935,14 @@ call pathogen#helptags()
         let g:vimtexcompleteimgusetail = 1
         let g:vimtexviewgeneralviewer = 'open'
         let g:vimtex_fold_enabled = 1
-        let g:vimtex_compiler_latexmk = {'callback' : 0}
         let g:vimtexviewgeneraloptions = '-r @line @pdf @tex'
         let g:vimtex_compiler_latexmk = {
+                \ 'callback' : 0,
                 \ 'options' : [
                 \   '-verbose',
                 \   '-file-line-error',
                 \   '-synctex=1',
+                \   '-shell-escape',
                 \   '-interaction=nonstopmode',
                 \ ],
                 \}
