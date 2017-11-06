@@ -927,6 +927,25 @@ call pathogen#helptags()
         \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
         \ . '|\w*'
         \ . ')$'
+
+        "tex preview config
+        let g:texflavor = 'latex'
+        let g:vimtexviewmethod = 'general'
+        let g:vimtexenabled = 1
+        let g:vimtexcompleteimgusetail = 1
+        let g:vimtexviewgeneralviewer = 'open'
+        let g:vimtex_fold_enabled = 1
+        let g:vimtex_compiler_latexmk = {'callback' : 0}
+        let g:vimtexviewgeneraloptions = '-r @line @pdf @tex'
+        let g:vimtex_compiler_latexmk = {
+                \ 'options' : [
+                \   '-verbose',
+                \   '-file-line-error',
+                \   '-synctex=1',
+                \   '-interaction=nonstopmode',
+                \ ],
+                \}
+
     endif
 
     " }}} vimtex

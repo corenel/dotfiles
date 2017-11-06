@@ -33,4 +33,4 @@ alias travis_on='[ -f $HOME/.travis/travis.sh ] && source /Users/yuthon/.travis/
 
 # utils
 alias typora='open -a typora'
-
+alias vim='/usr/local/bin/vim'

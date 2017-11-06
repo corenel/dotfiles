@@ -8,6 +8,7 @@ repos=(
 
   # easymotion/vim-easymotion
   # ervandew/supertab
+  # vim-latex/vim-latex
   Chiel92/vim-autoformat
   SirVer/ultisnips
   airblade/vim-gitgutter
