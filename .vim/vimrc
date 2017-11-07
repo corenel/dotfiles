@@ -828,6 +828,22 @@ call pathogen#helptags()
 
     " }}} undotree
 
+    " ultisnips {{{
+
+    if filereadable(expand('$HOME/.vim/bundle/ultisnips/plugin/UltiSnips.vim'))
+        " settings for ultisnips
+        let g:UltiSnipsExpandTrigger = '<Tab>'
+        let g:UltiSnipsJumpForwardTrigger = '<C-n>'
+        let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
+        let g:UltiSnipsEditSplit = 'context'
+        if !isdirectory(expand('$HOME/.vim/.tmp/ultisnips'))
+            call mkdir($HOME . '/.vim/.tmp/ultisnips', 'p')
+        endif
+        let g:UltiSnipsSnippetsDir = '$HOME/.vim/.tmp/ultisnips'
+    endif
+
+    " }}} ultisnips
+
     " vim-multiple-cursors {{{
 
     if filereadable(expand('$HOME/.vim/bundle/vim-multiple-cursors/plugin/multiple_cursors.vim'))
@@ -854,9 +870,18 @@ call pathogen#helptags()
     if filereadable(expand('$HOME/.vim/bundle/completor.vim/plugin/completor.vim'))
         let g:completor_python_binary = '/usr/local/bin/python3'
         let g:completor_clang_binary = '/usr/bin/clang'
-        " let g:completor_set_options = 0\
+        let g:completor_tex_omni_trigger = '\\\\(:?'
+                \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+                \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+                \ . '|hyperref\s*\[[^]]*'
+                \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+                \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+                \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+                \ .')$'
 
-        set completeopt-=noselect
+        " set completeopt-=noselect
         " set pumheight=10
         " automatically open and close the popup menu / preview window
         " if !exists('g:noautoclosepum')
@@ -896,38 +921,9 @@ call pathogen#helptags()
 
     " }}} vim-autoformat
 
-    " ultisnips {{{
-
-    if filereadable(expand('$HOME/.vim/bundle/ultisnips/plugin/UltiSnips.vim'))
-        let g:UltiSnipsExpandTrigger = '<Tab>'
-        let g:UltiSnipsJumpForwardTrigger = '<C-n>'
-        let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
-        let g:UltiSnipsEditSplit = 'context'
-        if !isdirectory(expand('$HOME/.vim/.tmp/ultisnips'))
-            call mkdir($HOME . '/.vim/.tmp/ultisnips', 'p')
-        endif
-        let g:UltiSnipsSnippetsDir = '$HOME/.vim/.tmp/ultisnips'
-    endif
-
-    " }}} ultisnips
-
     " vimtex {{{
 
     if filereadable(expand('$HOME/.vim/bundle/vimtex/autoload/vimtex.vim'))
-        let g:completor_tex_omni_trigger = '\\\\(:?'
-        \ . '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-        \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-        \ . '|hyperref\s*\[[^]]*'
-        \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-        \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|\w*'
-        \ . ')$'
-
         "tex preview config
         let g:texflavor = 'latex'
         let g:vimtexviewmethod = 'general'
@@ -1116,6 +1112,50 @@ call pathogen#helptags()
 
     " }}} vim-orgmode
 
+    " " nvim-completion-manager {{{
+
+    " if filereadable(expand('$HOME/.vim/bundle/nvim-completion-manager/plugin/cm.vim'))
+    "     " don't give |ins-completion-menu| messages.  For example,
+    "     " " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
+    "     set shortmess+=c
+    "     " When the <Enter> key is pressed while the popup menu is visible, it only hides the menu.
+    "     " Use this mapping to hide the menu and also start a new line.
+    "     inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+    "     " Here is an example for expanding snippet in the popup menu with <Enter> key. Suppose you
+    "     " use the <C-U> key for expanding snippet.
+    "     imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+    "     imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+    "     " When using CTRL-C key to leave insert mode, it does not trigger the autocmd InsertLeave.
+    "     " You should use CTRL-[, or map the <c-c> to <ESC>.
+    "     inoremap <c-c> <ESC>
+    "     " Use <TAB> to select the popup menu:
+    "     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    "     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"\
+
+    "     " settings for ultisnips
+    "     let g:ultisnipsexpandtrigger            = '<plug>(ultisnips_expand)'
+    "     let g:UltiSnipsJumpForwardTrigger       = '<c-j>'
+    "     let g:UltiSnipsJumpBackwardTrigger      = '<c-k>'
+    "     let g:UltiSnipsRemoveSelectModeMappings = 0
+    "     inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+
+    "     " If 'omnifunc' is the only available option, you may register it as a source for NCM.
+    "     augroup custom_cm_setup
+    "         autocmd!
+    "         autocmd User CmSetup call cm#register_source({
+    "             \ 'name' : 'vimtex',
+    "             \ 'priority': 8,
+    "             \ 'scoping': 1,
+    "             \ 'scopes': ['tex'],
+    "             \ 'abbreviation': 'tex',
+    "             \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+    "             \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+    "             \ })
+    "     augroup END
+    " endif
+
+    " " }}} nvim-completion-manager
+
 " }}} Plugin Settings
 
 " Filetype triggers {{{
@@ -1132,7 +1172,7 @@ augroup vimrc
     au BufNewFile,BufRead *.input   setf gnuplot
     au BufNewFile,BufRead *.json    set ft=json tw=0
     au BufNewFile,BufRead *.less    setlocal ft=less nocindent smartindent
-    au BufNewFile,BufRead *.md      setlocal ft=markdown nolist spell
+    au BufNewFile,BufRead *.md      setlocal ft=markdown nolist
     au BufNewFile,BufRead *.md,*.markdown setlocal foldlevel=999 tw=0 nocin
     au BufNewFile,BufRead *.ni      setlocal ft=inform nolist ts=2 sw=2 noet
     au BufNewFile,BufRead *.plist   setf xml
@@ -1142,6 +1182,7 @@ augroup vimrc
     au BufNewFile,BufRead *.ttml    setf xml
     au BufNewFile,BufRead *.vert,*.frag set ft=glsl
     au BufNewFile,BufRead *.xml     setlocal ft=xml  ts=2 sw=2 et
+    au BufNewFile,BufRead *.tex     setlocal tw=0 nocin
     au BufNewFile,BufRead *.zone    setlocal nolist ts=4 sw=4 noet
     au BufNewFile,BufRead *.zsh     setf zsh
     au BufNewFile,BufRead *templates/*.html setf htmldjango
