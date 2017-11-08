@@ -13,7 +13,7 @@ ZSH_THEME="ys"
 
 plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 # # automatically run tmux when starting shell
 # if which tmux >/dev/null 2>&1; then
@@ -92,13 +92,13 @@ alias tkw='tmux kill-window -t'
 alias tload='tmuxp load'
 alias ffk='set-remote && tmuxp load remote'
 
-function reset-remote() {
+reset-remote() {
   echo "reset remote ssh host:"
   read REMOTE
   tmux setenv -g REMOTE $REMOTE
 }
 
-function set-remote () {
+set-remote () {
   ssh -q $REMOTE exit
   while [[ $? -ne 0 ]]; do
       echo "invalid remote: $REMOTE"
@@ -108,7 +108,7 @@ function set-remote () {
   echo "valid ssh host: $REMOTE"
 }
 
-function ssh-remote () {
+ssh-remote () {
   # if [[ ("$REMOTE" && ! "$REMOTE" = "-REMOTE") ]] ; then
   if [[ ("$REMOTE") ]] ; then
     echo "use remote: $REMOTE"
@@ -121,19 +121,19 @@ function ssh-remote () {
   ssh "$REMOTE" -t "reset && $SHELL"
 }
 
-function twcall () {
+twcall () {
   for _pane in $(tmux list-panes -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
 }
 
-function tscall () {
+tscall () {
   for _pane in $(tmux list-panes -s -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
 }
 
-function tacall () {
+tacall () {
   for _pane in $(tmux list-panes -a -F '#{pane_id}'); do
     tmux send-key -t ${_pane} C-z "$1" Enter
   done
@@ -146,25 +146,11 @@ alias py2='python2'
 alias dfh='df -hlT'
 alias gput='watch -n 1 nvidia-smi'
 alias tree='tree -F -A -I CVS'
-# package manager
-export apt_pref='apt-get' # change to apt-fast if you like
-alias aac='sudo $apt_pref autoclean'
-alias aupd='sudo $apt_pref update'
-alias aupg='sudo $apt_pref upgrade'
-alias audg='sudo $apt_pref update && sudo $apt_pref upgrade'
-alias apge='sudo $apt_pref purge'
-alias arm='sudo $apt_pref remove'
-alias di='sudo dpkg -i'
-alias ai='sudo $apt_pref install'
-alias acs='apt-cache search'
-# shadowsocks
-alias ss='$HOME/proxyservice on'
-alias ssk='$HOME/proxyservice off'
 
 # proxy
-proxy='http://10.12.218.233:6152'
-function proxy () {
-  export http_proxy=$proxy
+export CUSTOM_PROXY='http://10.12.218.233:6152'
+proxy () {
+  export http_proxy=$CUSTOM_PROXYy
   export HTTPS_PROXY=$http_proxy
   export HTTP_PROXY=$http_proxy
   export FTP_PROXY=$http_proxy
@@ -175,7 +161,7 @@ function proxy () {
   echo "Proxy on"
 }
 
-function noproxy () {
+noproxy () {
   unset http_proxy
   unset HTTPS_PROXY
   unset HTTP_PROXY
@@ -188,10 +174,10 @@ function noproxy () {
 # virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # fzf
 [ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
 # custom
-source $HOME/.zshrc.custom
+[ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
