@@ -1,0 +1,4 @@
+[submodule ".ysvim"]
+    path = .ysvim
+    url = git@github.com:corenel/ysvim
+    branch = master
