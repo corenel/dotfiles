@@ -41,10 +41,12 @@ if [ -d $basedir/.git ]; then
   echo "Updating dotfiles using existing git..."
   cd $basedir
   git pull --quiet --rebase origin master
+  git submodule update --init --recursive --remote
 else
   echo "Checking out dotfiles using git..."
   rm -rf $basedir
   git clone --quiet --depth=1 $repourl $basedir
+  git submodule update --init --recursive --remote
 fi
 
 # create symbol links from $basedir to $HOME
@@ -52,7 +54,7 @@ cd $basedir
 echo "Creating symlinks..."
 for path in .* ; do
   case $path in
-    .|..|.git|.gitignore|.ssh)
+    .|..|.git|.gitignore)
       continue
       ;;
     *)
@@ -61,19 +63,15 @@ for path in .* ; do
   esac
 done
 
-# special for .vimrc
-symlink $basedir/.vim/vimrc $HOME/.vimrc
-
-# just check if ssh config already has github proxy
-mkdir -p $HOME/.ssh/
-if ! grep -q "Host github.com" $HOME/.ssh/config; then
-  cat $basedir/.ssh/config >> $HOME/.ssh/config
-fi
+# install ysvim
+cd $basedir/.ysvim
+./install.sh
 
 # install/update vim plugins
-echo "Setting up vim plugins..."
-mkdir -p $HOME/.vim/files/info
-.vim/update.sh
+# symlink $basedir/.vim/vimrc $HOME/.vimrc
+# echo "Setting up vim plugins..."
+# mkdir -p $HOME/.vim/files/info
+# .vim/update.sh
 
 # post-install for specific os
 postinstall=$HOME/.postinstall

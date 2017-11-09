@@ -8,7 +8,9 @@ repos=(
 
   # easymotion/vim-easymotion
   # ervandew/supertab
-  maralla/completor.vim
+  # roxma/ncm-clang
+  # roxma/nvim-completion-manager
+  # roxma/vim-hug-neovim-rpc
   Chiel92/vim-autoformat
   SirVer/ultisnips
   airblade/vim-gitgutter
@@ -23,15 +25,13 @@ repos=(
   junegunn/goyo.vim
   lervag/vimtex
   majutsushi/tagbar
+  maralla/completor.vim
   mbbill/undotree
   mhinz/vim-startify
   mileszs/ack.vim
   nathanaelkane/vim-indent-guides
   python-mode/python-mode
   qpkorr/vim-bufkill
-  # roxma/ncm-clang
-  # roxma/nvim-completion-manager
-  # roxma/vim-hug-neovim-rpc
   scrooloose/nerdtree
   sheerun/vim-polyglot
   terryma/vim-multiple-cursors

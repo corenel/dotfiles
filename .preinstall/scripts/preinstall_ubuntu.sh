@@ -7,9 +7,10 @@ sudo mkdir -p /etc/apt/sources.list.d
 sudo add-apt-repository ppa:jonathonf/vim
 sudo add-apt-repository ppa:saiarcot895/myppa
 sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get -y install apt-fast
-sudo apt-get install -y build-essential openssh-server git wget zsh htop vim python3-pip curl cmake autojump python-pip clang ccache pypy tmux polipo albert xclip xsel
+sudo apt-get install -y build-essential openssh-server git wget zsh htop vim python3-pip curl cmake autojump python-pip clang ccache pypy tmux polipo albert xclip xsel neovim
 
 # install oh-my-zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - --no-check-certificate)"
