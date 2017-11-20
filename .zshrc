@@ -133,7 +133,7 @@ alias tree='tree -F -A -I CVS'
 # proxy
 export CUSTOM_PROXY='http://10.12.218.233:6152'
 proxy () {
-  export http_proxy=$CUSTOM_PROXYy
+  export http_proxy=$CUSTOM_PROXY
   export HTTPS_PROXY=$http_proxy
   export HTTP_PROXY=$http_proxy
   export FTP_PROXY=$http_proxy
