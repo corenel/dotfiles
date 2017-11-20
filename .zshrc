@@ -84,42 +84,25 @@ alias chown='chown -v'
 alias rename='rename -v'
 # tmux
 alias t='tmux'
-alias tl='tmux list-sessions'
+alias tls='tmux list-sessions'
+alias tlp='tmux list-panes'
 alias ta='tmux attach -t'
 alias ts='tmux new -s'
 alias tks='tmux kill-session -t'
 alias tkw='tmux kill-window -t'
 alias tload='tmuxp load'
-alias ffk='set-remote && tmuxp load remote'
 
-reset-remote() {
-  echo "reset remote ssh host:"
-  read REMOTE
-  tmux setenv -g REMOTE $REMOTE
-}
-
-set-remote () {
-  ssh -q $REMOTE exit
-  while [[ $? -ne 0 ]]; do
-      echo "invalid remote: $REMOTE"
-      reset-remote
-      ssh -q "$REMOTE" exit
-  done
-  echo "valid ssh host: $REMOTE"
-}
-
-ssh-remote () {
-  # if [[ ("$REMOTE" && ! "$REMOTE" = "-REMOTE") ]] ; then
-  if [[ ("$REMOTE") ]] ; then
-    echo "use remote: $REMOTE"
-  elif [[ $(tmux show-environment -g REMOTE | sed "s:^.*=::") ]] ; then
-    export REMOTE=$(tmux show-environment -g REMOTE | sed "s:^.*=::")
-    echo "use global remote env: $REMOTE"
-  else
-    set-remote
-  fi
-  ssh "$REMOTE" -t "reset && $SHELL"
-}
+tssh () {
+  TPID=$(tmux list-panes -F "#{pane_active} #{pane_pid}" | awk "\$1==1 {\$1=\"\"; print}" | sed "s/^[ \\t]*//;s/[ \\t]*$//")
+  TTTY=$(ps -ao pid,tty,args | sort | awk -v TPID=$TPID "\$1 == TPID {\$1=\"\"; \$3=\"\"; print}" | sed "s/^[ ]*//;s/[ ]*$//")
+  TSSH=$(ps -ao pid,tty,args | sort | awk -v TTTY=$TTTY "\$2 ~ TTTY && \$3 ~ /ssh/ {\$1=\"\"; \$2=\"\"; print}" | sed "s/^[ \\t]*//;s/[ \\t]*$//")
+  export TPID=$TPID
+  export TTTY=$TTTY
+  export TSSH=$TSSH
+  print $TPID
+  print $TTTY
+  print $TSSH
+ }
 
 twcall () {
   for _pane in $(tmux list-panes -F '#{pane_id}'); do
