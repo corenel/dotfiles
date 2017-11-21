@@ -125,6 +125,8 @@ tacall () {
 # python
 alias py3='python3'
 alias py2='python2'
+alias pip3='python3 -m pip'
+alias pip2='python2 -m pip'
 # print info
 alias dfh='df -hlT'
 alias gput='watch -n 1 nvidia-smi'
