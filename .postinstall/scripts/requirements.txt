@@ -41,4 +41,6 @@ virtualenvwrapper
 tmuxp
 
 # for NeoVim
-neovim jedi psutil setproctitle
+neovim
+psutil
+setproctitle
