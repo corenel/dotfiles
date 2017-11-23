@@ -2,7 +2,7 @@ export DISABLE_AUTO_TITLE='true'
 export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 export GTEST_COLOR=1
-export EDITOR='nvim'
+export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 # export CXX="ccache clang++"
 # export CC="ccache clang"
 export LC_ALL=en_US.UTF-8
@@ -127,10 +127,15 @@ alias py3='python3'
 alias py2='python2'
 alias pip3='python3 -m pip'
 alias pip2='python2 -m pip'
+
 # print info
 alias dfh='df -hlT'
 alias gput='watch -n 1 nvidia-smi'
 alias tree='tree -F -A -I CVS'
+
+# nvim
+alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+# alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # proxy
 export CUSTOM_PROXY='http://10.12.218.233:6152'
