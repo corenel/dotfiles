@@ -156,13 +156,15 @@ noproxy () {
   echo "Proxy off"
 }
 
+# custom
+[ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
+
 # virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+[ -f $(brew --prefix)/bin/virtualenvwrapper.sh ] && source $(brew --prefix)/bin/virtualenvwrapper.sh
 
 # fzf
 [ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
-# custom
-[ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
