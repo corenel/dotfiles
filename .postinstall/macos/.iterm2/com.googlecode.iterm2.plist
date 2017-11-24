@@ -1545,13 +1545,13 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>472 304 737 299 0 0 1920 1080 </string>
+	<string>2057 -231 737 165 1920 -840 1080 1920 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>762 713 400 129 0 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>652 516 620 392 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>2071 -14 796 473 1920 -840 1080 1920 </string>
+	<string>2060 4 916 394 1920 -840 1080 1920 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>1270 0 650 1058 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -2146,7 +2146,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGMDZForPowerline-Regular 14</string>
+			<string>MesloLGMDZNerdFontC-RegularForPowerline 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -2812,7 +2812,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGMDZForPowerline-Regular 14</string>
+			<string>MesloLGMDZNerdFontC-RegularForPowerline 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>

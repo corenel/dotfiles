@@ -147,9 +147,6 @@ rto () {
   rsync -avzP $(pwd) $dsthost:$parentdir
 }
 
-remote_exist () {
-}
-
 # proxy
 export CUSTOM_PROXY='http://10.12.218.233:6152'
 proxy () {
