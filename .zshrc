@@ -137,6 +137,19 @@ alias tree='tree -F -A -I CVS'
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 # alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
+# rsync
+rto () {
+  dsthost=$1
+  relpath=$(pwd | sed "s#$HOME#\$HOME#g")
+  parentdir=$(dirname $(pwd) | sed "s#$HOME#\$HOME#g")
+
+  echo "rsync $relpath to $dsthost:$relpath ..."
+  rsync -avzP $(pwd) $dsthost:$parentdir
+}
+
+remote_exist () {
+}
+
 # proxy
 export CUSTOM_PROXY='http://10.12.218.233:6152'
 proxy () {
