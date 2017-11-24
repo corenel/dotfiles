@@ -1,11 +1,13 @@
 # python linters and formatters
 autopep8
+flake8
 isort
 jedi
+jsbeautifier
 mccabe
 mypy
 prospector
-flake8
+pyannotate
 pylama
 pylint
 rope
