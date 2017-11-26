@@ -54,7 +54,7 @@ cd $basedir
 echo "Creating symlinks..."
 for path in .* ; do
   case $path in
-    .|..|.git|.gitignore)
+    .|..|.git|.gitignore|.ysvim)
       continue
       ;;
     *)
