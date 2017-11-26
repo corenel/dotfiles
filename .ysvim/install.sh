@@ -65,9 +65,11 @@ clean() {
 }
 
 init_ysvimrc() {
-  if [[ ! -e $YSVIM_CFG ]]; then
-    cp -v "$YSVIM_HOME/.ysvimrc.example" "$YSVIM_CFG"
+  if [ -e $YSVIM_CFG ]; then
+    echo "backup existed .ysvimrc"
+    mv -v $YSVIM_CFG "$YSVIM_CFG.old"
   fi
+  cp -v "$YSVIM_HOME/.ysvimrc.example" "$YSVIM_CFG"
 }
 
 install_plugins() {
