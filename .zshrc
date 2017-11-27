@@ -130,7 +130,7 @@ alias py3='python3'
 alias py2='python2'
 alias pip3='python3 -m pip'
 alias pip2='python2 -m pip'
-alias pip3upgrade="pip3 install -U $(pip3 list --outdated --format=freeze | awk '{split($0, a, "=="); print a[1]}')"
+alias pip3upgrade='pip3 install -U $(pip3 list --outdated --format=freeze | awk "{split($0, a, \"==\"); print a[1]}")'
 
 # print info
 alias dfh='df -hlT'
