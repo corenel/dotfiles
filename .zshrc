@@ -28,16 +28,19 @@ plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
 
 # Alias
 # edit config
-alias sc='source $HOME/.zshrc'
-alias st='tmux source $HOME/.tmux.conf'
-alias zc='$EDITOR $HOME/.zshrc'
-alias zcc='$EDITOR $HOME/.zshrc.custom'
-alias zs='$EDITOR $HOME/.ssh/config'
-alias zv='$EDITOR $HOME/.vim/vimrc'
-alias zt='$EDITOR $HOME/.tmux.conf'
-alias uv='$HOME/.vim/update.sh'
-alias ud='cd $.dotfiles/ && git pull && cd -'
-alias ud='cd $.dotfiles-personal/ && git pull && cd -'
+alias sc="source $HOME/.zshrc"
+alias st="tmux source $HOME/.tmux.conf"
+alias zc="$EDITOR $HOME/.zshrc"
+alias zcc="$EDITOR $HOME/.zshrc.custom"
+alias zs="$EDITOR $HOME/.ssh/config"
+alias zv="$EDITOR $HOME/.vim/vimrc"
+alias zt="$EDITOR $HOME/.tmux.conf"
+alias ud="cd $HOME/.dotfiles/ && git pull && cd -"
+alias udp="cd $HOME/.dotfiles-personal/ && git pull && cd -"
+alias uy="cd $HOME/.ysvim/ && git pull && cd -"
+alias jd="$HOME/.dotfiles"
+alias jdp="$HOME/.dotfiles-personal"
+alias jy="$HOME/.ysvim"
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
@@ -75,7 +78,7 @@ alias fd='find . -type d -name' # find directories in current path
 alias ff='find . -type f -name' # find files in current path
 alias fdr='sudo find / -type d -name' # find directories in root path
 alias ffr='sudo find / -type f -name' # find files in root path
-# dangerous operations with prompt
+# dangerous operations with prompt and verbose
 alias mv='mv -i -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
@@ -127,6 +130,7 @@ alias py3='python3'
 alias py2='python2'
 alias pip3='python3 -m pip'
 alias pip2='python2 -m pip'
+alias pip3upgrade="pip3 install -U $(pip3 list --outdated --format=freeze | awk '{split($0, a, "=="); print a[1]}')"
 
 # print info
 alias dfh='df -hlT'
