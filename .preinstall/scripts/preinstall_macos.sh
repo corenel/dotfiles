@@ -18,8 +18,12 @@ brew install zsh xclip autojump python3 python pip-completion watch cppcheck wge
 brew install vim --with-python3 --without-python
 brew install neovim
 
+# install node packages 
+npm install -g csslint prettier stylelint htmlhint eslint
+
 # install oh-my-zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - --no-check-certificate)"
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 

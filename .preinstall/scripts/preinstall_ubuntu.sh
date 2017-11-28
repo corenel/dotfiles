@@ -25,12 +25,16 @@ mkdir -p /home/yuthon/.local/lib/python2.7/site-packages
 echo 'import site; site.addsitedir("/home/linuxbrew/.linuxbrew/lib/python2.7/site-packages")' >> /home/yuthon/.local/lib/python2.7/site-packages/homebrew.pth
 echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/berkeley-db@4/bin:$PATH"' >> ~/.bashrc
 
+# install node packages 
+npm install -g csslint prettier stylelint htmlhint eslint
+
+# install nerd fonts
+cd "$HOME/Downloads" || return
+git clone https://github.com/ryanoasis/nerd-fonts.git
+./install.sh
+
 # install oh-my-zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - --no-check-certificate)"
 git clone git://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 
-# install nerd fonts
-cd $HOME/Downloads
-git clone https://github.com/ryanoasis/nerd-fonts.git
-./install.sh
