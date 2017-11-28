@@ -13,6 +13,7 @@ brew cask install xquartz \
   font-fira-code font-firacode-nerd-font font-firamono-nerd-font \
   font-meslo-for-powerline font-meslo-nerd-font font-meslo-nerd-font-mono \
   font-hack-nerd-font \
+  xamarin-jdk android-sdk
 
 brew install zsh xclip autojump python3 python pip-completion watch cppcheck wget nvm clang gcc \
   htop reattach-to-user-namespace ffmpeg cmake tree ctags openssh clang-format m-cli graphviz ccat \

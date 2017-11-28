@@ -8,6 +8,7 @@ export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 ZSH_THEME="ys"
 
