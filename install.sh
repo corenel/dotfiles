@@ -54,7 +54,7 @@ cd $basedir
 echo "Creating symlinks..."
 for path in .* ; do
   case $path in
-    .|..|.git|.gitignore|.ysvim)
+    .|..|.git|.gitignore|.gitignore.example|.gitconfig.example|.ysvim)
       continue
       ;;
     *)
@@ -62,6 +62,10 @@ for path in .* ; do
       ;;
   esac
 done
+
+# init global gitconfig and gitignore
+cp -v .gitconfig.example "$HOME/.gitconfig"
+cp -v .gitignore.example "$HOME/.gitignore"
 
 # install ysvim
 cd $basedir/.ysvim
