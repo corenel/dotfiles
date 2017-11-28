@@ -14,7 +14,9 @@ brew cask install xquartz \
   font-meslo-for-powerline font-meslo-nerd-font font-meslo-nerd-font-mono \
   font-hack-nerd-font \
 
-brew install zsh xclip autojump python3 python pip-completion watch cppcheck wget nvm clang gcc htop reattach-to-user-namespace ffmpeg cmake tree ctags openssh clang-format m-cli graphviz ccat gpg ag ack fzf write-good
+brew install zsh xclip autojump python3 python pip-completion watch cppcheck wget nvm clang gcc \
+  htop reattach-to-user-namespace ffmpeg cmake tree ctags openssh clang-format m-cli graphviz ccat \
+  gpg ag ack fzf write-good hadolint
 brew install vim --with-python3 --without-python
 brew install neovim
 
