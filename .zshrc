@@ -36,12 +36,17 @@ alias zcc="$EDITOR $HOME/.zshrc.custom"
 alias zs="$EDITOR $HOME/.ssh/config"
 alias zv="$EDITOR $HOME/.vim/vimrc"
 alias zt="$EDITOR $HOME/.tmux.conf"
+# pull updates
 alias ud="cd $HOME/.dotfiles/ && git pull && cd -"
 alias udp="cd $HOME/.dotfiles-personal/ && git pull && cd -"
 alias uy="cd $HOME/.ysvim/ && git pull && cd -"
-alias jd="$HOME/.dotfiles"
-alias jdp="$HOME/.dotfiles-personal"
-alias jy="$HOME/.ysvim"
+# quick jump
+alias jd="[ -d $HOME/.dotfiles ] && cd $HOME/.dotfiles"
+alias jdp="[ -d $HOME/.dotfiles-personal ] && cd $HOME/.dotfiles-personal"
+alias jv="[ -d $HOME/.ysvim ] && cd $HOME/.ysvim"
+alias jw="[ -d $HOME/Workspace ] && cd $HOME/Workspace"
+alias jg="[ -d $HOME/Github ] && cd $HOME/Github"
+alias jt="[ -d $HOME/.tmp ] && cd $HOME/.tmp"
 # ls (from common-aliases)
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
