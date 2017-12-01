@@ -12,7 +12,7 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 ZSH_THEME="ys"
 
-plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker autojump zsh-autosuggestions zsh-syntax-highlighting)
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
