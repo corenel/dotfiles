@@ -190,7 +190,7 @@ export WORKON_HOME=~/.virtualenvs
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ -f $(brew --prefix)/bin/virtualenvwrapper.sh ] && source $(brew --prefix)/bin/virtualenvwrapper.sh
 # add path for virtualenv 
-add_venv_path () {}
+add_venv_path () {
   export PYTHONPATH="$VIRTUAL_ENV/usr/local/lib/python3.6/site-packages:$PYTHONPATH"
   export PKG_CONFIG_PATH="$VIRTUAL_ENV/usr/local/lib/pkgconfig/"
   export LD_LIBRARY_PATH="$VIRTUAL_ENV/usr/local/lib/:$LD_LIBRARY_PATH"
