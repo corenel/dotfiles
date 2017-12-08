@@ -1,0 +1,8 @@
+# shadowsocksr
+alias ss='$HOME/proxyservice on'
+alias ssk='$HOME/proxyservice off'
+
+# crouton
+alias crouton='sudo sh ~/Downloads/crouton'
+alias xiwi='sudo startxfce4 -X xiwi'
+alias xiwi-tab='sudo startxfce4 -X xiwi-tab'
