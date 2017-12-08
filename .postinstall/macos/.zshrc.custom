@@ -31,6 +31,9 @@ alias nvm_on='export NVM_DIR=$HOME/.nvm && . /usr/local/opt/nvm/nvm.sh'
 # travis gem
 alias travis_on='[ -f $HOME/.travis/travis.sh ] && source /Users/yuthon/.travis/travis.sh'
 
+# virtualenv in brew path
+[ -f $(brew --prefix)/bin/virtualenvwrapper.sh ] && source $(brew --prefix)/bin/virtualenvwrapper.sh
+
 # utils
 alias typora='open -a typora'
 alias vim='/usr/local/bin/vim'

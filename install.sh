@@ -82,9 +82,9 @@ postinstall=$HOME/.postinstall
 if [ -e $postinstall ]; then
   echo "Running post-install for os-specific dotfiles"
   # check os type
-  if [ "$(uname)" == "Darwin" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
     oscustom=macos
-  elif [ "$(uname)" == "Linux" ]; then
+  elif [ "$(uname)" = "Linux" ]; then
     oscustom=ubuntu
   else
     echo "unsupported os type."
