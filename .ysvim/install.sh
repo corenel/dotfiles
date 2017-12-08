@@ -38,7 +38,7 @@ check() {
 
 update_repo() {
   # clone or update git repo
-  if [[ -d $YSVIM_HOME/.git ]]; then
+  if [ -d $YSVIM_HOME/.git ]; then
     echo "Updating dotfiles using existing git..."
     cd "$YSVIM_HOME"
     git pull --quiet --rebase origin master
@@ -52,11 +52,11 @@ update_repo() {
 clean() {
   # bakcup file or directory
   dst=$1
-  if [[ -e $dst ]]; then
+  if [ -e $dst ]; then
     # Rename files with a ".old" extension.
     echo "$dst already exists, renaming to $dst.old"
     backup=$dst.old
-    if [[ -e $backup ]]; then
+    if [ -e $backup ]; then
       echo "Error: $backup already exists. Please delete or rename it."
       exit 1
     fi
@@ -74,9 +74,9 @@ init_ysvimrc() {
 
 install_plugins() {
 
-  if [[ $1 == "vim" ]]; then
+  if [ "$1" = "vim" ]; then
     INS_HOME=$VIM_HOME
-  elif [[ $1 == "nvim" ]]; then
+  elif [ "$1" = "nvim" ]; then
     INS_HOME=$NVIM_HOME
   else
     echo "not set vim or nvim"
@@ -85,7 +85,7 @@ install_plugins() {
 
   # INS_HOME=$YSVIM_HOME
 
-  if [[ $YSVIM_PLUG -eq 1 ]]; then
+  if [ $YSVIM_PLUG -eq 1 ]; then
     # install Vim-Plug
     echo '==> Downloading Vim-Plug ......'
     curl -LSso "$INS_HOME/autoload/plug.vim" --create-dirs \
@@ -93,11 +93,11 @@ install_plugins() {
     mkdir -p "$INS_HOME/plugged"
     # install plugins
     eval "$1 +PlugInstall +qall"
-  elif [[ $YSVIM_DEIN -eq 1 ]]; then
+  elif [ $YSVIM_DEIN -eq 1 ]; then
     # install Dein.vim
     echo "==> Downloading Dein.vim ..."
     git clone https://github.com/Shougo/dein.vim "$INS_HOME/dein/repos/github.com/Shougo/dein.vim"
-  elif [[ $YSVIM_PATHOGEN -eq 1 ]]; then
+  elif [ $YSVIM_PATHOGEN -eq 1 ]; then
     # install pathogen
     echo "==> Downloading Pathogen ..."
     curl -LSso "$INS_HOME/autoload/pathogen.vim" --create-dirs \
