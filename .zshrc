@@ -188,7 +188,6 @@ noproxy () {
 export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
-[ -f $(brew --prefix)/bin/virtualenvwrapper.sh ] && source $(brew --prefix)/bin/virtualenvwrapper.sh
 # add path for virtualenv 
 add_venv_path () {
   export PYTHONPATH="$VIRTUAL_ENV/usr/local/lib/python3.6/site-packages:$PYTHONPATH"
