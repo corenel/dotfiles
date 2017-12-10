@@ -147,6 +147,25 @@ alias tree='tree -F -A -I CVS'
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 # alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
+# misc
+replace_name () {
+  file_pattern=$1
+  before=$2
+  after=$3
+  for f in `find . -name "$file_pattern"`; do
+    mv -i "${f}" "${f/$before/$after}";
+  done
+}
+
+replace_content () {
+  file_pattern=$1
+  before=$2
+  after=$3
+  for f in `find . -name "$file_pattern"`; do
+    sed -i "s/$before/$after/g" $f;
+  done
+}
+
 # rsync
 rto () {
   dsthost=$1
