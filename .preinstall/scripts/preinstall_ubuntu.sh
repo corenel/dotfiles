@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
 # install essential packages
-sudo cp ./ubuntu/sources.list /etc/apt/sources.list
-sudo add-apt-repository ppa:saiarcot895/myppa
-sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo cp /etc/apt/sources.list /etc/apt/sources.list
+sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+# sudo cp ./ubuntu/sources.list /etc/apt/sources.list
+# sudo add-apt-repository ppa:saiarcot895/myppa
+# sudo add-apt-repository ppa:nilarimogard/webupd8
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y --install-recommends linux-generic-hwe-16.04 xserver-xorg-hwe-16.04
 sudo apt-get install -y --allow-unauthenticated build-essential openssh-server git wget htop curl \
-  cmake autojump python-pip clang ccache pypy polipo albert xclip xsel zsh
+  cmake autojump python-pip clang ccache pypy polipo xclip xsel zsh
 
 # install linuxbrew
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
