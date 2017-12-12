@@ -12,7 +12,7 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 ZSH_THEME="ys"
 
-plugins=(git docker autojump zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker autojump zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
@@ -214,7 +214,8 @@ noproxy () {
 [ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
 
 # virtualenv
-export VIRTUALENVWRAPPER_PYTHON=python3
+[ -f /usr/local/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+[ -f /usr/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 # add path for virtualenv 
