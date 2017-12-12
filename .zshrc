@@ -166,6 +166,16 @@ replace_content () {
   done
 }
 
+replace_encoding () {
+  file_pattern=$1
+  before=$2
+  after=$3
+  mkdir -p converted
+  for f in `find . -name "$file_pattern"`; do
+    iconv -f $before -t $after > "converted/$f";
+  done
+}
+
 # rsync
 rto () {
   dsthost=$1
