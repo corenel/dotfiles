@@ -12,7 +12,7 @@ set -e
 YSVIM_NAME="ysvim"
 YSVIM_HOME="$HOME/.ysvim"
 YSVIM_CFG="$HOME/.ysvimrc"
-YSVIM_URL="git@github.com:corenel/ysvim.git"
+YSVIM_URL="https://github.com/corenel/ysvim.git"
 
 YSVIM_PLUG=1
 YSVIM_DEIN=0
