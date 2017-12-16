@@ -17,13 +17,18 @@ brew tap caskroom/cask
 brew tap caskroom/fonts
 
 # install packages
-brew cask install xquartz \
-  font-source-code-pro font-source-code-pro-for-powerline \
+brew cask install \
+  sublime-text calibre clover-configurator docker etcher \
+  hammerspoon iina karabiner-elements kext-utility skim snappy \
+  vlc vlcstreamer real-vnc vnc-viewer wewechat xld intel-power-gadget \
+  android-file-transfer typora aria2gui iterm2 xquartz maciasl mounty \
+  xamarin-jdk android-sdk \
+  font-source-code-pro \
   font-sourcecodepro-nerd-font font-sourcecodepro-nerd-font-mono \
   font-fira-code font-firacode-nerd-font font-firamono-nerd-font \
   font-meslo-for-powerline font-meslo-nerd-font font-meslo-nerd-font-mono \
   font-hack-nerd-font \
-  xamarin-jdk android-sdk
+#  google-chrome google-backup-and-sync mactex surge dropbox \
 
 brew install zsh autojump \
   python3 python pip-completion \
@@ -31,7 +36,7 @@ brew install zsh autojump \
   htop reattach-to-user-namespace \
   ffmpeg cmake tree ctags openssh \
   clang-format m-cli graphviz ccat \
-  gpg ag ack fzf write-good hadolint
+  gpg ag ack fzf hadolint
 brew install vim --with-python3 --without-python
 brew install neovim
 
