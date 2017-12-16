@@ -36,7 +36,7 @@ brew install zsh autojump \
   htop reattach-to-user-namespace \
   ffmpeg cmake tree ctags openssh \
   clang-format m-cli graphviz ccat \
-  gpg ag ack fzf hadolint
+  gpg ag ack fzf hadolint tmux
 brew install vim --with-python3 --without-python
 brew install neovim
 
