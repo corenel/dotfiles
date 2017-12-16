@@ -22,7 +22,7 @@ brew cask install \
   hammerspoon iina karabiner-elements kext-utility skim snappy \
   vlc vlcstreamer real-vnc vnc-viewer wewechat xld intel-power-gadget \
   android-file-transfer typora aria2gui iterm2 xquartz maciasl mounty \
-  xamarin-jdk android-sdk ieasemusic\
+  xamarin-jdk android-sdk ieasemusic gitup\
   font-source-code-pro \
   font-sourcecodepro-nerd-font font-sourcecodepro-nerd-font-mono \
   font-fira-code font-firacode-nerd-font font-firamono-nerd-font \
