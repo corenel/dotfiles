@@ -214,10 +214,14 @@ noproxy () {
 [ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
 
 # virtualenv
-[ -f /usr/local/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-[ -f /usr/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+if [ "$brew_prefix" ] ; then
+  export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
+  source "$brew_prefix/bin/virtualenvwrapper.sh"
+else
+  [ -f /usr/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+fi
 # add path for virtualenv 
 add_venv_path () {
   export PYTHONPATH="$VIRTUAL_ENV/usr/local/lib/python3.6/site-packages:$PYTHONPATH"
