@@ -19,7 +19,7 @@ brew tap caskroom/fonts
 # install packages
 brew cask install \
   sublime-text calibre clover-configurator docker etcher \
-  hammerspoon iina karabiner-elements kext-utility skim snappy \
+  hammerspoon iina karabiner-elements kext-utility skim \
   vlc vlcstreamer real-vnc vnc-viewer wewechat xld intel-power-gadget \
   android-file-transfer typora aria2gui iterm2 xquartz maciasl mounty \
   xamarin-jdk android-sdk ieasemusic gitup\
