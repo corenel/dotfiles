@@ -235,3 +235,4 @@ add_venv_path () {
 # fzf
 [ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
+export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
