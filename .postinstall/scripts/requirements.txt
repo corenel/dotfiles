@@ -10,7 +10,7 @@ prospector
 pyannotate
 pylama
 pylint
-rope
+#rope
 vim-vint
 yamllint
 yapf
@@ -29,6 +29,7 @@ scikit-learn
 scipy
 six
 sk-video
+pyav
 
 # virtualenv
 virtualenvwrapper
@@ -40,7 +41,7 @@ virtualenvwrapper
 #torchvision
 
 # special utils
-tmuxp
+#tmuxp
 
 # for NeoVim
 neovim
