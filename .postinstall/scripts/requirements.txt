@@ -29,7 +29,7 @@ scikit-learn
 scipy
 six
 sk-video
-pyav
+av
 
 # virtualenv
 virtualenvwrapper
