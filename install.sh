@@ -118,7 +118,7 @@ install_orig_vim() {
 
 post_install() {
   # post-install for specific os
-  postinstall=BASEDIR/.postinstall/$1
+  postinstall=$BASEDIR/.postinstall/$1
   cd $postinstall
   # symlink os custom
   for path in .* ; do
@@ -137,7 +137,7 @@ post_install() {
   done
 
   # execute post-install script
-  "$postinstall/scripts/postinstall_$oscustom.sh"
+  "$postinstall/../scripts/postinstall_$1.sh"
 }
 
 #################
@@ -149,6 +149,6 @@ check_git
 check_repo
 link_dotfiles
 install_ysvim
-postinstall $OSCUSTOM
+post_install $OSCUSTOM
 
 } # This ensures the entire script is downloaded.
