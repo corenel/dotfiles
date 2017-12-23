@@ -31,7 +31,7 @@ brew cask install \
   font-meslo-for-powerline font-meslo-nerd-font font-meslo-nerd-font-mono \
   font-hack-nerd-font \
 
-brew install zsh autojump \
+brew install zsh autojump tmux\
   python3 python pip-completion \
   watch cppcheck wget nvm gcc \
   htop reattach-to-user-namespace \
