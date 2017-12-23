@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 # install essential packages
-sudo cp /etc/apt/sources.list /etc/apt/sources.list
-sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-# sudo cp ./ubuntu/sources.list /etc/apt/sources.list
-# sudo add-apt-repository ppa:saiarcot895/myppa
-# sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y --install-recommends linux-generic-hwe-16.04 xserver-xorg-hwe-16.04

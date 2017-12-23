@@ -18,17 +18,18 @@ brew tap caskroom/fonts
 
 # install packages
 brew cask install \
-  sublime-text calibre clover-configurator docker etcher \
+  google-chrome google-backup-and-sync sublime-text calibre docker dropbox etcher \
   hammerspoon iina karabiner-elements kext-utility skim \
   vlc vlcstreamer real-vnc vnc-viewer wewechat xld intel-power-gadget \
   android-file-transfer typora aria2gui iterm2 xquartz maciasl mounty \
-  xamarin-jdk android-sdk ieasemusic gitup\
+  xamarin-jdk android-sdk \
+# mactex surge clover-configurator\
+brew cask install \
   font-source-code-pro \
   font-sourcecodepro-nerd-font font-sourcecodepro-nerd-font-mono \
   font-fira-code font-firacode-nerd-font font-firamono-nerd-font \
   font-meslo-for-powerline font-meslo-nerd-font font-meslo-nerd-font-mono \
   font-hack-nerd-font \
-#  google-chrome google-backup-and-sync mactex surge dropbox \
 
 brew install zsh autojump \
   python3 python pip-completion \
@@ -36,12 +37,13 @@ brew install zsh autojump \
   htop reattach-to-user-namespace \
   ffmpeg cmake tree ctags openssh \
   clang-format m-cli graphviz ccat \
-  gpg ag ack fzf hadolint tmux
-brew install vim --with-python3 --without-python
+  gpg ag ack fzf hadolint
+/usr/local/opt/fzf/install
+#brew install vim --with-python3 --without-python
 brew install neovim
 
 # install node packages 
-npm install -g csslint prettier stylelint htmlhint eslint
+#npm install -g csslint prettier stylelint htmlhint eslint
 
 # install oh-my-zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - --no-check-certificate)"

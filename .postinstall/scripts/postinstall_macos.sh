@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # install hammerspoon
-git clone https://github.com/ashfinal/awesome-hammerspoon.git ~/.hammerspoon
-cp ~/.hammerspoon/config-example.lua ~/.hammerspoon/private/config.lua
+ln -sf "$HOME/.postinstall/macos/.hammerspoon" "$HOME/.hammerspoon"
 
 # install python packages
 python3 -m pip install --upgrade pip
