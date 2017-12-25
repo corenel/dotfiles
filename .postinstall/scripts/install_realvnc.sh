@@ -19,6 +19,7 @@ echo "---- setup vncserver ----"
 # sudo vncpasswd -virtual
 echo -e "#!/bin/sh\nDESKTOP_SESSION=xfce\nexport DESKTOP_SESSIO\nstartxfce4\nvncserver-virtual -kill $DISPLAY" | sudo tee /etc/vnc/xstartup.custom
 echo -e "-geometry 1920x1080\n# -extension RENDER" | sudo tee /etc/vnc/config.custom
+echo '_connectToExisting=1' | sudo tee /etc/vnc/config.d/vncserver-virtuald
 sudo chmod +x /etc/vnc/xstartup.custom
 # echo 'Permissions=root:f,%teachers:d,%pupils:v' | sudo tee -a /root/.vnc/config.d/vncserver-virtuald
 # echo 'DaemonPort=6051' | sudo tee -a /root/.vnc/config.d/vncserver-virtuald
