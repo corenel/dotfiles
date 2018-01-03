@@ -14,8 +14,8 @@ YSVIM_HOME="$HOME/.ysvim"
 YSVIM_CFG="$HOME/.ysvimrc"
 YSVIM_URL="https://github.com/corenel/ysvim.git"
 
-YSVIM_PLUG=1
-YSVIM_DEIN=0
+YSVIM_PLUG=0
+YSVIM_DEIN=1
 YSVIM_PATHOGEN=0
 
 VIM_HOME="$HOME/.vim"
@@ -97,6 +97,8 @@ install_plugins() {
     # install Dein.vim
     echo "==> Downloading Dein.vim ..."
     git clone https://github.com/Shougo/dein.vim "$INS_HOME/dein/repos/github.com/Shougo/dein.vim"
+    # install plugins
+    eval "$1 +'call dein#check_install()' +'call dein#install()' +qall"
   elif [ $YSVIM_PATHOGEN -eq 1 ]; then
     # install pathogen
     echo "==> Downloading Pathogen ..."
