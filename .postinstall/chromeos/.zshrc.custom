@@ -8,3 +8,6 @@ alias crouton='sudo sh ~/Downloads/crouton'
 alias xiwi='sudo startxfce4 -X xiwi'
 alias xiwi-tab='sudo startxfce4 -X xiwi-tab'
 alias ec='sudo enter-chroot'
+
+# jump
+alias jw='cd ~/Downloads/Workspace'
