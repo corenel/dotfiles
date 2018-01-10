@@ -190,9 +190,10 @@ rto () {
 }
 
 # proxy
-export CUSTOM_PROXY='http://10.12.218.233:6152'
+export CUSTOM_HTTP_PROXY='http://localhost:6152'
+export CUSTOM_SOCKS5_PROXY='socks5://localhost:6153'
 proxy () {
-  export http_proxy=$CUSTOM_PROXY
+  export http_proxy=$CUSTOM_HTTP_PROXY
   export HTTPS_PROXY=$http_proxy
   export HTTP_PROXY=$http_proxy
   export FTP_PROXY=$http_proxy
