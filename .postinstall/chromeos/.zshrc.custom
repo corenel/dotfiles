@@ -1,5 +1,5 @@
 # shadowsocksr
-export SSR_HOME='~/Downloads/Workspace/shadowsocksr/shadowsocks/'
+export SSR_HOME='~/Downloads/Workspace/shadowsocksr/shadowsocks'
 alias ss='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d start'
 alias ssk='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d stop'
 
