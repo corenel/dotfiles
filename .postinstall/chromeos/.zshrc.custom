@@ -1,8 +1,10 @@
 # shadowsocksr
-alias ss='$HOME/proxyservice on'
-alias ssk='$HOME/proxyservice off'
+exprot SSR_HOME='~/Downloads/Workspace/shadowsocksr/shadowsocks/'
+alias ss='sudo python3 $SSR_HOME/local.py -c 3 $SSR_HOME/shadowsocks.json -d start'
+alias ssk='sudo python3 3 $SSR_HOME/local.py -c 3 $SSR_HOME/shadowsocks.json -d stop'
 
 # crouton
 alias crouton='sudo sh ~/Downloads/crouton'
 alias xiwi='sudo startxfce4 -X xiwi'
 alias xiwi-tab='sudo startxfce4 -X xiwi-tab'
+alias ec='sudo enter-chroot'
