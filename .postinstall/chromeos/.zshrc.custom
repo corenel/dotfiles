@@ -16,3 +16,7 @@ alias jw='cd ~/Downloads/Workspace'
 alias restart_service='adb connect 100.115.92.2; \
   adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh; \
   adb shell sh /data/data/me.piebridge.brevent/brevent.sh'
+
+# texlive
+export PATH=$PATH:/usr/local/share/texlive/2017/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/share/texlive/2017/bin/texmf-dist/doc/man
