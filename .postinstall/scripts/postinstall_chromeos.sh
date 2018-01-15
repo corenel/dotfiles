@@ -16,6 +16,7 @@ tlmgr install latexmk xetex beamer l3packages l3kernel fontspec \
   multirow caption subfig booktabs enumitem 
 
 # setup custom fonts
+# https://bugs.chromium.org/p/chromium/issues/detail?id=320364
 mkdir -p /usr/local/share/fonts/
 
 # apply zshrc
