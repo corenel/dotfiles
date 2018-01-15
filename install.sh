@@ -43,15 +43,15 @@ check_os() {
     read -r -p "(Choose 0, 1 or 2):" opt
     case $opt in
       0)
-        echo "macos"
+        export YSVIM_OS="macos"
         break
         ;;
       1)
-        echo "ubuntu"
+        export YSVIM_OS="ubuntu"
         break
         ;;
       2)
-        echo "chromeos"
+        export YSVIM_OS="chromeos"
         break
         ;;
       *)
@@ -106,7 +106,11 @@ link_dotfiles() {
 
 install_ysvim() {
   cd $BASEDIR/.ysvim
-  ./install.sh
+  if [ "$YSVIM_OS" == "chromeos" ]; then
+    bash ./install.sh
+  else
+    ./install.sh
+  fi
 }
 
 install_orig_vim() {

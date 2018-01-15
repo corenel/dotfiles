@@ -1,8 +1,22 @@
 # shadowsocksr
-alias ss='$HOME/proxyservice on'
-alias ssk='$HOME/proxyservice off'
+export SSR_HOME="/home/chronos/user/Downloads/Workspace/shadowsocksr/shadowsocks"
+alias ss='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d start'
+alias ssk='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d stop'
 
 # crouton
 alias crouton='sudo sh ~/Downloads/crouton'
 alias xiwi='sudo startxfce4 -X xiwi'
 alias xiwi-tab='sudo startxfce4 -X xiwi-tab'
+alias ec='sudo enter-chroot'
+
+# jump
+alias jw='cd ~/Downloads/Workspace'
+
+# android
+alias restart_service='adb connect 100.115.92.2; \
+  adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh; \
+  adb shell sh /data/data/me.piebridge.brevent/brevent.sh'
+
+# texlive
+export PATH=$PATH:/usr/local/share/texlive/2017/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/share/texlive/2017/bin/texmf-dist/doc/man
