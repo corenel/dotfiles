@@ -15,5 +15,8 @@ tlmgr install latexmk xetex beamer l3packages l3kernel fontspec \
   ctex xecjk fandol \
   multirow caption subfig booktabs enumitem 
 
+# setup custom fonts
+mkdir -p /usr/local/share/fonts/
+
 # apply zshrc
 source $HOME/.zshrc
