@@ -222,7 +222,7 @@ noproxy () {
 
 # virtualenv
 export WORKON_HOME=~/.virtualenvs
-if [ "$brew_prefix" ] ; then
+if [ -f "$brew_prefix/bin/python3" ] ; then
   if [ -e "$brew_prefix/bin/virtualenvwrapper.sh" ] ; then
     export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
     source "$brew_prefix/bin/virtualenvwrapper.sh"
