@@ -1,6 +1,7 @@
 # install chromebrew
 curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
-crew install buildessential zsh tmux wget htop python3 fasd neovim
+crew install buildessential zsh tmux wget htop python3 fasd neovim \
+  tldr tree
 
 # install crouton
 curl -Ls https://goo.gl/fd3zc -o ~/Downloads/crouton && yes | \
