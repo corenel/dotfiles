@@ -6,3 +6,4 @@
 !.vim/vimrc
 !.vim/update.sh
 !.vim/update_packages.sh
+.postinstall/macos/.hammerspoon

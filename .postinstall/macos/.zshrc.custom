@@ -3,6 +3,12 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # homebrew mirror
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# export PATH=/Developer/NVIDIA/CUDA-9.1/bin${PATH:+:${PATH}}
+# export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.1/lib\
+#  ${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+export CUDA_HOME=/usr/local/cuda
+export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
+export PATH="$CUDA_HOME/bin:$PATH"
 
 # homebrew
 alias bf='brew info'
