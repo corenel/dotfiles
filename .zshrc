@@ -223,7 +223,7 @@ if [ "$brew_prefix" ] ; then
   export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
   source "$brew_prefix/bin/virtualenvwrapper.sh"
 else
-  [ -f /usr/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 fi
 # add path for virtualenv 
