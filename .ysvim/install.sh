@@ -74,16 +74,16 @@ init_ysvimrc() {
 
 install_plugins() {
 
-  if [ "$1" = "vim" ]; then
-    INS_HOME=$VIM_HOME
-  elif [ "$1" = "nvim" ]; then
-    INS_HOME=$NVIM_HOME
-  else
-    echo "not set vim or nvim"
-    exit 1
-  fi
+  # if [ "$1" = "vim" ]; then
+  #   INS_HOME=$VIM_HOME
+  # elif [ "$1" = "nvim" ]; then
+  #   INS_HOME=$NVIM_HOME
+  # else
+  #   echo "not set vim or nvim"
+  #   exit 1
+  # fi
 
-  # INS_HOME=$YSVIM_HOME
+  INS_HOME=$YSVIM_HOME
 
   if [ $YSVIM_PLUG -eq 1 ]; then
     # install Vim-Plug
