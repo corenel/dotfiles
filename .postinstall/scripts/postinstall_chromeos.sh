@@ -11,7 +11,7 @@ tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 tlmgr update --self
 tlmgr update --all
 tlmgr install latexmk xetex beamer l3packages l3kernel fontspec chktex \ 
-  mathtools tex4ht doublestroke \
+  mathtools tex4ht doublestroke zapfding \
   ctex xecjk fandol \
   multirow caption subfig booktabs enumitem 
 
