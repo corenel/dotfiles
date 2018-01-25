@@ -1,7 +1,7 @@
 # shadowsocksr
-export SSR_HOME="/home/chronos/user/Downloads/Workspace/shadowsocksr/shadowsocks"
-alias ss='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d start'
-alias ssk='sudo python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d stop'
+export SSR_HOME="/home/chronos/user/Downloads/Github/shadowsocksr/shadowsocks"
+alias ss='sudo LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d start'
+alias ssk='sudo LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH python3 $SSR_HOME/local.py -c $SSR_HOME/shadowsocks.json -d stop'
 
 # crouton
 alias crouton='sudo sh ~/Downloads/crouton'
@@ -23,3 +23,6 @@ export MANPATH=$MANPATH:/usr/local/share/texlive/2017/bin/texmf-dist/doc/man
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+export CUSTOM_SOCKS5_PROXY='socks5://localhost:1080'
+export CUSTOM_HTTP_PROXY=$CUSTOM_SOCKS5_PROXY
