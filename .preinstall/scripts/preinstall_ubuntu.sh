@@ -4,24 +4,26 @@
 sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 # run 'sudo apt-get install -y software-properties-common' if add-apt-repository is not found
 sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:pi-rho/dev
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y --install-recommends \
   linux-generic-hwe-16.04 xserver-xorg-hwe-16.04
 sudo apt-get install -y --allow-unauthenticated build-essential \
   openssh-server git wget htop curl cmake autojump clang ccache \
-  pypy polipo xclip xsel zsh \
+  pypy polipo xclip xsel zsh tmux-next neovim\
   python-dev python-pip python3-dev python3-pip python3.6 python3.6-dev
 
 # install linuxbrew
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bashrc
-echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >> ~/.bashrc
-echo 'export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"' >> ~/.bashrc
-source ~/.bashrc
-brew install neovim tmux axel
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+# test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+# test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+# test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bashrc
+# echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >> ~/.bashrc
+# echo 'export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"' >> ~/.bashrc
+# source ~/.bashrc
+# brew install neovim tmux axel
 # brew install python3
 # brew install vim --with-client-server --with-python3 --without-python --with-overide-system-vi --with-lua
 # mkdir -p /home/yuthon/.local/lib/python2.7/site-packages
