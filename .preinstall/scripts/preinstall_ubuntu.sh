@@ -3,9 +3,9 @@
 # install essential packages
 sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 # run 'sudo apt-get install -y software-properties-common' if add-apt-repository is not found
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo add-apt-repository ppa:pi-rho/dev
+sudo add-apt-repository -y ppa:jonathonf/python-3.6
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo add-apt-repository -y ppa:pi-rho/dev
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y --install-recommends \
