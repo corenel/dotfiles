@@ -1,0 +1,24 @@
+# python linters and formatters
+autopep8
+flake8
+isort
+jedi
+mypy
+vim-vint
+yamllint
+yapf
+
+# cpp linters
+cpplint
+
+# common packages
+numpy
+
+# virtualenv
+virtualenvwrapper
+
+# for NeoVim
+neovim
+psutil
+setproctitle
+

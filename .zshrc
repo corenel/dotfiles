@@ -146,6 +146,9 @@ alias dfh='df -hlT'
 alias gput='watch -n 1 nvidia-smi'
 alias tree='tree -F -A -I CVS'
 
+# aria2c
+alias ar='aria2c --conf-path=$HOME/.aria2/aria2.conf -D'
+
 # nvim
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 # alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
@@ -219,11 +222,13 @@ noproxy () {
 
 # virtualenv
 export WORKON_HOME=~/.virtualenvs
-if [ "$brew_prefix" ] ; then
-  export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
-  source "$brew_prefix/bin/virtualenvwrapper.sh"
+if [ -f "$brew_prefix/bin/python3" ] ; then
+  if [ -e "$brew_prefix/bin/virtualenvwrapper.sh" ] ; then
+    export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
+    source "$brew_prefix/bin/virtualenvwrapper.sh"
+  fi
 else
-  [ -f /usr/bin/python3 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 fi
 # add path for virtualenv 

@@ -7,3 +7,4 @@
 !.vim/update.sh
 !.vim/update_packages.sh
 .postinstall/macos/.hammerspoon
+.aria2/*.session
