@@ -148,11 +148,11 @@ post_install() {
 #  MAIN SCRIPT  #
 #################
 
-OSCUSTOM=$(check_os)
+check_os
 check_git
 check_repo
 link_dotfiles
 install_ysvim
-post_install $OSCUSTOM
+post_install $YSVIM_OS
 
 } # This ensures the entire script is downloaded.
