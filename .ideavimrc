@@ -1,0 +1,159 @@
+    " Map ; to : and save a million keystrokes
+    nnoremap ; :
+
+    " For any plugins that use this, make their keymappings use comma
+    " let g:mapleader = get(g:, 'ysvim_leader', ',')
+    " let g:maplocalleader = get(g:, 'ysvim_localleader', ',')
+
+    " Useful macros I use the most
+    " nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+    " nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+    " nmap \b :set nocin tw=80<CR>:set formatoptions+=a<CR>
+    " nmap \c :call TmuxPaneClear()<CR>
+    " nmap \l :setlocal number!<CR>:setlocal number?<CR>
+    " nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+    " nmap \r :call TmuxPaneRepeat()<CR>
+    " nmap \s :setlocal invspell<CR>
+    " nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+    " nmap \u :setlocal list!<CR>:setlocal list?<CR>
+    " nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+    " nmap \A :set formatoptions+=a<CR>:echo 'autowrap enabled'<CR>
+    " nmap \a :set formatoptions-=a<CR>:echo 'autowrap disabled'<CR>
+
+    " nmap \c :CLEAN<CR>:TEOL<CR>
+    " nmap \e :call ToggleVaffle()<CR>
+    " nmap \e :Vaffle<CR>
+    nmap \f :Neoformat<CR>
+    " nmap \g :Gstatus<CR>
+    nmap \h :nohlsearch<CR>
+    " nmap \i vip:sort<CR>
+    nmap \l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=2 concealcursor=niv"<CR>
+    nmap \o :set paste!<CR>:set paste?<CR>
+    " nmap \v :Startify<CR>
+    " nmap \x :cclose<CR>
+    nmap \t :tabnew<CR>
+    nmap \z :w<CR>:!open %<CR><CR>
+
+    " Turn off linewise keys. Normally, the `j' and `k' keys move the cursor down one entire line. with
+    " line wrapping on, this can cause the cursor to actually skip a few lines on the screen because
+    " it's moving from line N to line N+1 in the file. I want this to act more visually -- I want `down'
+    " to mean the next line on the screen
+    nmap j gj
+    nmap k gk
+    " nmap j <Plug>(accelerated_jk_gj_position)
+    " nmap k <Plug>(accelerated_jk_gk_position)
+
+    " Map jk to enter normal mode
+    imap jk <Esc>
+
+    " You don't know what you're missing if you don't use this.
+    nmap <C-e> :e#<CR>
+
+    " Move between open buffers.
+    nmap <C-n> :bnext<CR>
+    nmap <C-p> :bprev<CR>
+
+    " Move between open tabs.
+    nmap <C-f> :tabnext<CR>
+    nmap <C-b> :tabprev<CR>
+
+    " Add new line without entering insert mode
+    nmap <S-CR> O<Esc>
+    nmap <CR> o<Esc>
+
+    " Emacs-like bindings in insert mode
+    imap <C-e> <C-o>$
+    imap <C-a> <C-o>0
+
+    " Emacs-like bindings in the command line from `:h emacs-keys`
+    cnoremap <C-a>  <Home>
+    cnoremap <C-b>  <Left>
+    cnoremap <C-f>  <Right>
+    cnoremap <C-d>  <Del>
+    cnoremap <C-e>  <End>
+    cnoremap <M-b>  <S-Left>
+    cnoremap <M-f>  <S-Right>
+    cnoremap <M-d>  <S-right><Delete>
+    cnoremap <Esc>b <S-Left>
+    cnoremap <Esc>f <S-Right>
+    cnoremap <Esc>d <S-right><Delete>
+    cnoremap <C-g>  <C-c>
+
+    " Use the space key to toggle folds
+    nnoremap <space> za
+    vnoremap <space> zf
+
+    " Ctrl-a: Go to begin of line
+    inoremap <C-a> <Home>
+
+    " Ctrl-e: Go to end of line
+    inoremap <C-e> <End>
+
+    " Ctrl-[bf]: Move cursor left/right
+    inoremap <C-b> <Left>
+    inoremap <C-f> <Right>
+
+    " Ctrl-[hl]: Move left/right by word
+    inoremap <C-h> <S-Left>
+    inoremap <C-l> <S-Right>
+
+    " Ctrl-[kj]: Move cursor up/down
+    inoremap <C-k> <C-o>gk
+    inoremap <C-j> <C-o>gj
+
+    " Ctrl-[kj]: Move lines up/down
+    " nnoremap <silent> <C-j> :m .+1<CR>==
+    " nnoremap <silent> <C-k> :m .-2<CR>==
+    " inoremap <silent> <C-j> <Esc>:m .+1<CR>==gi
+    " inoremap <silent> <C-k> <Esc>:m .-2<CR>==gi
+    vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
+    vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
+
+    " Search for the word under the cursor in the current directory
+    nmap <M-k>    mo:Ack! "\b<cword>\b" <CR>
+    nmap <Esc>k   mo:Ack! "\b<cword>\b" <CR>
+    nmap <M-S-k>  mo:Ggrep! "\b<cword>\b" <CR>
+    nmap <Esc>K   mo:Ggrep! "\b<cword>\b" <CR>
+
+    " Alt-W to delete a buffer and remove it from the list but keep the window via bufkill.vim
+    " nmap <Esc>w :BD<CR>
+
+    " Fix annoyances in the QuickFix window, like scrolling too much
+    " augroup quickfix
+    "     autocmd!
+        " autocmd FileType qf setlocal number nolist scrolloff=0
+        " autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
+    " augroup END
+
+    " Commands to send common keystrokes using tmux
+    " let g:tmux_console_pane = '0:0.0'
+    " let g:tmux_server_pane = '0:0.0'
+    " function TmuxPaneRepeat()
+    "     write
+    "     silent execute ':!tmux send-keys -t' g:tmux_console_pane 'C-p' 'C-j'
+    "     redraw!
+    " endfunction
+    " function TmuxPaneClear()
+    "     silent execute ':!tmux send-keys -t' g:tmux_server_pane 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j' 'C-j'
+    "     redraw!
+    " endfunction
+
+    " Make the cursor stay on the same line when window switching
+    " function! KeepCurrentLine(motion)
+    "     let l:theLine = line('.')
+    "     let l:theCol = col('.')
+    "     exec 'wincmd ' . a:motion
+    "     if &diff
+    "         call cursor(l:theLine, l:theCol)
+    "     endif
+    " endfunction
+    " nnoremap <C-w>h :silent call KeepCurrentLine('h')<CR>
+    " nnoremap <C-w>l :silent call KeepCurrentLine('l')<CR>
+
+    " Typing `$c` on the command line expands to `:e` + the current path, so it's easy to edit a file in
+    " the same directory as the current file.
+    " cnoremap $c e <C-\>eCurrentFileDir()<CR>
+    " function! CurrentFileDir()
+    "     return 'e ' . expand('%:p:h') . '/'
+    " endfunction
+
