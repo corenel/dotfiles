@@ -132,6 +132,7 @@ nnoremap <leader>su :action ShowUsages<CR>
 nnoremap <leader>se :action ShowErrorDescription<CR>
 nnoremap <leader>sf :action FileStructurePopup<CR>
 nnoremap <leader>sv :source ~/.ideavimrc<CR>
+nnoremap <leader>sd :action QuickJavaDoc<CR>
 nnoremap <leader>cv :action ChangeView<CR>
 nnoremap <leader>bb :action ToggleLineBreakpoint<CR>
 nnoremap <leader>br :action ViewBreakpoints<CR>
