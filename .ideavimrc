@@ -154,5 +154,6 @@ nnoremap <leader>gt :action GotoTest<CR>
 nnoremap <leader>gr :action GotoRelated<CR>
 nnoremap <leader>gf :action GotoFile<CR>
 nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>gg :action Generate<CR>
 nnoremap <leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
 vnoremap <leader>tl y<CR>:action ActivateTerminalToolWindow<CR>
