@@ -35,12 +35,13 @@ brew install zsh autojump tmux\
   python3 python pip-completion \
   watch cppcheck wget nvm gcc \
   htop reattach-to-user-namespace \
-  ffmpeg cmake tree ctags openssh \
+  ffmpeg cmake tree openssh \
   clang-format m-cli graphviz ccat \
   gpg ag ack fzf hadolint tldr
 /usr/local/opt/fzf/install
 #brew install vim --with-python3 --without-python
 brew install neovim
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # install node packages 
 #npm install -g csslint prettier stylelint htmlhint eslint
