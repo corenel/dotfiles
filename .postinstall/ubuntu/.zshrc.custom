@@ -2,6 +2,11 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/cuda/lib64:/u
 export CUDA_HOME=/usr/local/cuda
 export PATH="$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
 
+# linuxbrew
+[ -d "/home/linuxbrew/.linuxbrew/" ] && export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+[ -d "/home/linuxbrew/.linuxbrew/" ] && export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+[ -d "/home/linuxbrew/.linuxbrew/" ] && export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
 # package manager
 export apt_pref='apt-get' # change to apt-fast if you like
 

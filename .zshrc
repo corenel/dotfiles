@@ -9,9 +9,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-[ -d "/home/linuxbrew/.linuxbrew/" ] && export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-[ -d "/home/linuxbrew/.linuxbrew/" ] && export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-[ -d "/home/linuxbrew/.linuxbrew/" ] && export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 ZSH_THEME="ys"
 
@@ -189,7 +186,11 @@ rto () {
   parentdir=$(dirname $(pwd) | sed "s#$HOME#\$HOME#g")
 
   echo "rsync $relpath to $dsthost:$relpath ..."
-  rsync -avzP $(pwd) $dsthost:$parentdir
+  if [ -e "$(pwd)/exclude.txt" ] ; then
+    rsync -avzP --exclude-from="$(pwd)/exclude.txt" $(pwd) $dsthost:$parentdir
+  else
+    rsync -avzP $(pwd) $dsthost:$parentdir
+  fi
 }
 
 # proxy
@@ -221,24 +222,23 @@ noproxy () {
 [ -f $HOME/.zshrc.custom ] && source $HOME/.zshrc.custom
 
 # virtualenv
-export WORKON_HOME=~/.virtualenvs
-if [ -f "$brew_prefix/bin/python3" ] ; then
-  if [ -e "$brew_prefix/bin/virtualenvwrapper.sh" ] ; then
-    export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
-    source "$brew_prefix/bin/virtualenvwrapper.sh"
+setup_venv() {
+  export WORKON_HOME=$HOME/.virtualenvs
+  if [ -f "$brew_prefix/bin/python3" ] ; then
+    if [ -e "$brew_prefix/bin/virtualenvwrapper.sh" ] ; then
+      export VIRTUALENVWRAPPER_PYTHON="$brew_prefix/bin/python3"
+      source "$brew_prefix/bin/virtualenvwrapper.sh"
+    fi
+  else
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+    [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
   fi
-else
-  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-  [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
-fi
-# add path for virtualenv 
-add_venv_path () {
-  export PYTHONPATH="$VIRTUAL_ENV/usr/local/lib/python3.6/site-packages:$PYTHONPATH"
+
+  # export PYTHONPATH="$VIRTUAL_ENV/usr/local/lib/python3.6/site-packages:$PYTHONPATH"
   export PKG_CONFIG_PATH="$VIRTUAL_ENV/usr/local/lib/pkgconfig/"
   export LD_LIBRARY_PATH="$VIRTUAL_ENV/usr/local/lib/:$LD_LIBRARY_PATH"
 }
+alias sv=setup_venv
 
 # fzf
-[ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
-
-export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
