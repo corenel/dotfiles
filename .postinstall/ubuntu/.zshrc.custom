@@ -36,14 +36,16 @@ setup_ros()
   # workon humanoid
 
   [ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
-  [ -f $HOME/humanoid-lib/devel/setup.zsh ] && source $HOME/humanoid-lib/devel/setup.zsh
-  [ -f $HOME/humanoid/devel/setup.zsh ] && source $HOME/humanoid/devel/setup.zsh
+  [ -f $HOME/dancer-deps/misc/.zshrc.deps ] && source $HOME/dancer-deps/misc/.zshrc.deps
+  # [ -f $HOME/humanoid-lib/devel/setup.zsh ] && source $HOME/humanoid-lib/devel/setup.zsh
+  # [ -f $HOME/humanoid/devel/setup.zsh ] && source $HOME/humanoid/devel/setup.zsh
   export ROSCONSOLE_FORMAT='[${time} ${file}:${line}]: ${message}'
 
   alias rcd='roscd'
   alias e='rosed'
   alias rmk='catkin_make -j8'
   alias rt="catkin_make run_tests"
+  alias rcl='catkin_make clean'
   alias rpkg='catkin_create_pkg'
   alias rcore='roscore &'
   alias rl='roslaunch'
