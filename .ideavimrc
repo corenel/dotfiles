@@ -126,7 +126,10 @@ nnoremap ]d :action QuickImplementations<CR>
 nnoremap ]e :action GotoNextError<CR>
 nnoremap [e :action GotoPreviousError<CR>
 
-nnoremap <leader>ff :action FindInPath<CR>
+nnoremap <leader>fb :action Find<CR>
+nnoremap <leader>rb :action Replace<CR>
+nnoremap <leader>fp :action FindInPath<CR>
+nnoremap <leader>rp :action ReplaceInPath<CR>
 nnoremap <leader>fu :action FindUsages<CR>
 nnoremap <leader>su :action ShowUsages<CR>
 nnoremap <leader>se :action ShowErrorDescription<CR>
