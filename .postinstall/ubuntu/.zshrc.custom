@@ -2,6 +2,14 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/cuda/lib64:/u
 export CUDA_HOME=/usr/local/cuda
 export PATH="$CUDA_HOME/bin:$HOME/.local/bin:$PATH"
 
+# Golang
+export GOPATH="$HOME/.golang" 
+if [ ! -d $GOPATH ]; then
+  mkdir -p $GOPATH
+fi
+[ -d "/usr/lib/go-1.10/bin" ] && export PATH="/usr/lib/go-1.10/bin:$PATH"
+[ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
+
 # linuxbrew
 [ -d "/home/linuxbrew/.linuxbrew/" ] && export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 [ -d "/home/linuxbrew/.linuxbrew/" ] && export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
