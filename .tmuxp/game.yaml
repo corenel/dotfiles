@@ -1,0 +1,14 @@
+session_name: ZJUDancer
+start_directory: ./
+windows:
+- window_name: program
+  focus: True
+  layout: main-vertical
+  options:
+    main-pane-height: 35
+  shell_command_before:
+    - 'if type "setup_ros" > /dev/null; then setup_ros; fi'
+    - export ZJUDANCER_SKILL=$(cat /tmp/ZJUDANCER_SKILL)
+  panes:
+  - roslaunch dlaunch game.launch
+  - sleep 5 && roslaunch dbehavior default.launch skill:=${ZJUDANCER_SKILL}

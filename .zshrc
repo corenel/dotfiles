@@ -3,8 +3,8 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 export GTEST_COLOR=1
 export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-# export CXX="ccache clang++"
-# export CC="ccache clang"
+export CXX="ccache clang++"
+export CC="ccache clang"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8

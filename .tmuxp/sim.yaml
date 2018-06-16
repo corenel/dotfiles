@@ -1,0 +1,25 @@
+session_name: ZJUDancer
+start_directory: ./
+windows:
+- window_name: program
+  focus: True
+  layout: main-vertical
+  options:
+    main-pane-height: 35
+  shell_command_before: 
+    - 'if type "setup_ros" > /dev/null; then setup_ros; fi'
+    - export ZJUDANCER_ROBOTID=$(cat /tmp/ZJUDANCER_ROBOTID)
+    - export ZJUDANCER_SKILL=$(cat /tmp/ZJUDANCER_SKILL)
+  panes:
+    - roslaunch dlaunch sim_${ZJUDANCER_ROBOTID}.launch
+    - sleep 5 && roslaunch dbehavior ${ZJUDANCER_ROBOTID}.launch skill:=${ZJUDANCER_SKILL}
+- window_name: simulation
+  layout: tiled
+  options:
+    main-pane-height: 35
+  shell_command_before: 
+    - 'if type "setup_ros" > /dev/null; then setup_ros; fi'
+    - export ZJUDANCER_ROBOTID=$(cat /tmp/ZJUDANCER_ROBOTID)
+    - export ZJUDANCER_SKILL=$(cat /tmp/ZJUDANCER_SKILL)
+  panes:
+    - rosrun dviz dviz

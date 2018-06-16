@@ -1,0 +1,15 @@
+session_name: ZJUDancer
+start_directory: ./
+windows:
+- window_name: program
+  focus: True
+  layout: tiled
+  options:
+    main-pane-height: 35
+  shell_command_before:
+    - 'if type "setup_ros" > /dev/null; then setup_ros; fi'
+  panes:
+    - roslaunch dconfig dconfig.launch  
+    - roslaunch dlaunch game.launch
+    - sleep 5 && roslaunch dbehavior default.launch skill:=DemoMain
+    - clear
