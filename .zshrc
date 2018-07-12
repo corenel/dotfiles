@@ -3,8 +3,8 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM=screen-256color
 export GTEST_COLOR=1
 export EDITOR='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-export CXX="ccache clang++"
-export CC="ccache clang"
+# export CXX="ccache clang++"
+# export CC="ccache clang"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -12,7 +12,12 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 ZSH_THEME="ys"
 
-plugins=(git docker autojump zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(
+  git autojump extract
+  copydir copybuffer copyfile cp
+  zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+  colored-man-pages colorize
+)
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
